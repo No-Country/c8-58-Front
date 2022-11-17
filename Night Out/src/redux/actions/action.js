@@ -1,4 +1,4 @@
-{/*import axios from "axios";
+import axios from "axios";
 export const GET_USER = "GET_USER";
 export const POST_USER = "POST_USER";
 
@@ -23,4 +23,3 @@ const postUser = () => {
 };
 
 export { getUser, postUser };
-*/}

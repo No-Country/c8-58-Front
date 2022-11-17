@@ -2,7 +2,7 @@ import React from "react";
 
 function HowItWorks() {
   return (
-    <div className="flex flex-col items-center colorBlanco ">
+    <div className="flex flex-col items-center colorBlanco scroll-mt-4 snap-start snap-always">
       <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl">
         How it works
       </h2>
@@ -41,7 +41,7 @@ function HowItWorks() {
           </div>
         </div>
       </div>
-      <img className="w-1/3 h-44" src="src\assets\flechas.png" alt="imagen flechas" />
+      <img className="w-1/3 h-20 opacity-70" src="src\assets\flechas.png" alt="imagen flechas" />
     </div>
   );
 }
