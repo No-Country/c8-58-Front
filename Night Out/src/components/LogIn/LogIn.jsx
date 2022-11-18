@@ -1,14 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-function SignIn() {
+function LogIn() {
   return (
-    <div className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 " id="logear">
-      <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl m-10 text-center">
-        What now?
-      </h2>
+    <div className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 mt-16 " id="logear">
+        <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl m-10"> Sign In</h2>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl p-10 flex flex-col justify-evenly items-center w-1/2 mb-10">
-        <h2 className="font-bold text-4xl ">Sign in!</h2>
         <form className="flex flex-col w-full " action="">
           <label className="text-xl font-bold m-2 ml-5" htmlFor="username">Username</label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full mb-5">
@@ -31,7 +28,7 @@ function SignIn() {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default SignIn;
+export default LogIn
