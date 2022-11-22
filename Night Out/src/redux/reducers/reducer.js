@@ -1,24 +1,61 @@
-import { GET_USER, POST_USER } from "../actions/action";
+import {
+	GET_USER,
+	POST_USER,
+	GET_PUBLICATIONS,
+	FILTER_BY_QUERY,
+	POST_PUBLICATIONS,
+	GET_PROVINCES,
+	GET_MUNICIPALITIES
+} from '../actions/action';
 
 const initialState = {
-  Usuario: [],
+	user: [],
+	allPublications: [],
+	currentPublications: [],
+	provinces: [],
+	municipalities: []
 };
 
 export function reducers(state = initialState, { payload, type }) {
-  switch (type) {
-    case GET_USER:
-      return {
-        ...state,
-        Usuario: payload,
-      };
-    case POST_USER:
-      return {
-        ...state,
-        Usuario: payload,
-      };
-    default:
-      return state;
-  }
-}
+	switch (type) {
+		case GET_USER:
+			return {
+				...state,
+				user: payload
+			};
+		case POST_USER:
+			return {
+				...state,
+				user: payload
+			};
+		case GET_PUBLICATIONS:
+			return {
+				...state,
+				allPublications: payload
+			};
+		case FILTER_BY_QUERY:
+			return {
+				...state,
+				currentPublications: payload
+			};
 
-//export default reducers;
+		case POST_PUBLICATIONS:
+			return {
+				...state,
+				publications: payload
+			};
+
+		case GET_PROVINCES:
+			return {
+				...state,
+				provinces: payload
+			};
+		case GET_MUNICIPALITIES:
+			return {
+				...state,
+				municipalities: payload
+			};
+		default:
+			return state;
+	}
+}
