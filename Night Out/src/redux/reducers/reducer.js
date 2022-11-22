@@ -31,7 +31,8 @@ export function reducers(state = initialState, { payload, type }) {
 		case GET_PUBLICATIONS:
 			return {
 				...state,
-				allPublications: payload
+				allPublications: payload,
+				currentPublications: payload
 			};
 		case FILTER_BY_QUERY:
 			return {
@@ -42,7 +43,7 @@ export function reducers(state = initialState, { payload, type }) {
 		case POST_PUBLICATIONS:
 			return {
 				...state,
-				publications: payload
+				publications: [...state.allPublications, payload]
 			};
 
 		case GET_PROVINCES:

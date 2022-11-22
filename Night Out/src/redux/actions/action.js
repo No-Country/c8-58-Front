@@ -29,12 +29,12 @@ const getUserDetail = (id) => {
 	};
 };
 
-const postUser = () => {
+const postUser = (payload) => {
 	return async function (dispatch) {
-		let newUser = await axios.get(`${ROUTE}users`);
+		await axios.get(`${ROUTE}users`, payload);
 		return dispatch({
 			type: POST_USER,
-			payload: newUser.data
+			payload
 		});
 	};
 };
@@ -83,12 +83,12 @@ const filterByQuery = (params) => {
 	};
 };
 
-const postPublications = () => {
+const postPublications = (payload) => {
 	return async function (dispatch) {
-		let newPublication = await axios.get(`${ROUTE}publications`);
+		await axios.post(`${ROUTE}publications`, payload);
 		return dispatch({
 			type: POST_PUBLICATIONS,
-			payload: newPublication.data
+			payload
 		});
 	};
 };
@@ -118,7 +118,7 @@ const getProvinces = () => {
 const getMunicipalities = (id) => {
 	return async function (dispatch) {
 		let allMunicipalities = await axios.get(
-			`${ROUTE}publications//barrios/${id}`
+			`${ROUTE}publications/barrios/${id}`
 		);
 		return dispatch({
 			type: GET_MUNICIPALITIES,
