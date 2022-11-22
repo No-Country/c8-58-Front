@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="bg-gradiante1 absolute text-white flex flex-col justify-between Navbar z-50">
+    <div className="bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50">
       <div>
       <div className="self-center flex flex-col items-center justify-evenly mt-4">
         <img
