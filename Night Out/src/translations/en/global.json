@@ -1,0 +1,22 @@
+{
+  "alerts":{
+    "correct": "Correct",
+    "incorrect": "Incorrect"
+  },
+  "language":{
+    "change": "Change Language"
+  },
+  "header":{
+    "home": "Home",
+    "correct": "Correct",
+    "incorrect": "Incorrect"
+  },
+  "home":{
+    "title": "Night Out",
+    "test": "test"
+  },
+  "Post":{
+    "name": "Name: ",
+    "password": "Password: "
+  }
+}
