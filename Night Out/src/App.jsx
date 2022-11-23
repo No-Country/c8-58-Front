@@ -8,6 +8,8 @@ import { Route, Routes } from "react-router-dom";
 import LogIn from './components/LogIn/LogIn'
 import Publications from './components/Feed/Publications'
 import Navbar from './components/Feed/Navbar'
+import Filters from './components/Feed/Filters'
+import User from './components/User/User'
 
 function App() {
   return (
@@ -49,7 +51,13 @@ function App() {
         <Route path="/Feed" element={
           <main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
           <Publications />
+          <Filters />
           <Navbar />
+          </main>
+        }></Route>
+        <Route path="/User" element={
+          <main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
+            <User />
           </main>
         }></Route>
       </Routes>

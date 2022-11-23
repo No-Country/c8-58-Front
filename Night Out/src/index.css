@@ -17,7 +17,8 @@ select:-webkit-autofill:focus {
 .Navbar {
   height: calc(100vh - 120px);
   width: 30%;
-  left: 113%;
+  left: 70%;
+  left: 100%;
 }
 
 .colorBlanco {
