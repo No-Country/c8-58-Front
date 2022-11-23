@@ -9,6 +9,7 @@ import LogIn from './components/LogIn/LogIn'
 import Publications from './components/Feed/Publications'
 import Navbar from './components/Feed/Navbar'
 import Filters from './components/Feed/Filters'
+import User from './components/User/User'
 
 import { AlertsProvider } from './components/alerts/Alerts'
 
@@ -40,24 +41,29 @@ function App() {
               </main>
         <Footer />
               </>
-            }
-          ></Route>
-          <Route path="/Sign-In" element={
-            <>
-            <main className="w-10/12 flex flex-col items-center mx-auto ">
-              <LogIn />
-            </main>
-        <Footer />
-            </>
-          }></Route>
-          <Route path="/Feed" element={
-            <main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
-            <Publications />
-            <Filters />
-            <Navbar />
-            </main>
-          }></Route>
-        </Routes>
+          }
+        ></Route>
+        <Route path="/Sign-In" element={
+          <>
+          <main className="w-10/12 flex flex-col items-center mx-auto ">
+            <LogIn />
+          </main>
+      <Footer />
+          </>
+        }></Route>
+        <Route path="/Feed" element={
+          <main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
+          <Publications />
+          <Filters />
+          <Navbar />
+          </main>
+        }></Route>
+        <Route path="/User" element={
+          <main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
+            <User />
+          </main>
+        }></Route>
+      </Routes>
       </AlertsProvider>
     </div>
   );
