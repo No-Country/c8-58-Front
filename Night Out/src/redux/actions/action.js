@@ -4,10 +4,13 @@ export const GET_USER = 'GET_USER';
 export const GET_USER_DETAIL = 'GET_USER_DETAIL';
 export const POST_USER = 'POST_USER';
 export const GET_PUBLICATIONS = 'GET_PUBLICATIONS';
+export const GET_PUBLICATION_DETAIL = 'GET_PUBLICATION_DETAIL';
 export const FILTER_BY_QUERY = 'FILTER_BY_QUERY';
 export const POST_PUBLICATIONS = 'POST_PUBLICATIONS';
 export const GET_PROVINCES = 'GET_PROVINCES';
 export const GET_MUNICIPALITIES = 'GET_MUNICIPALITIES';
+export const POST_REVIEW = 'POST_REVIEW';
+export const DELETE_REVIEW = 'DELETE_REVIEW';
 
 const getUser = () => {
 	return async function (dispatch) {
@@ -73,6 +76,18 @@ const getPublications = () => {
 	};
 };
 
+const getPublicationDetail = (id) => {
+	return async function (dispatch) {
+		let publicationDetail = await axios.get(
+			`${ROUTE}publications/detail/${id}`
+		);
+		return dispatch({
+			type: GET_PUBLICATION_DETAIL,
+			payload: publicationDetail.data
+		});
+	};
+};
+
 const filterByQuery = (params) => {
 	return async function (dispatch) {
 		let filterPublications = await axios.get(`${ROUTE}publications?${params}`);
@@ -127,6 +142,18 @@ const getMunicipalities = (id) => {
 	};
 };
 
+const postReview = (payload) => {
+	return async function (dispatch) {
+		await axios.post(`${ROUTE}reviews`, payload);
+	};
+};
+
+const deleteReview = (id) => {
+	return async function (dispatch) {
+		await axios.delete(`${ROUTE}reviews/${id}`);
+	};
+};
+
 export {
 	getUser,
 	getUserDetail,
@@ -136,10 +163,13 @@ export {
 	putBan,
 	deleteUser,
 	getPublications,
+	getPublicationDetail,
 	filterByQuery,
 	postPublications,
 	putPublications,
 	deletePublication,
 	getProvinces,
-	getMunicipalities
+	getMunicipalities,
+	postReview,
+	deleteReview
 };
