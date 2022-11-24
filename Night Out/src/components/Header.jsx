@@ -1,15 +1,37 @@
 import React from "react";
 import { Form, NavLink, Route, Routes } from "react-router-dom";
+
+import { useTranslation } from 'react-i18next'
+import Language from './language/Language'
+
+import { Alerts } from './alerts/Alerts'
+
 {
   /*import { NavbarHamburguesa } from './NavbarHamburguesa'*/
 }
 
 function Header() {
+  const [t] = useTranslation('global')
+  const { correct, wrong } = Alerts()
+
+  const clickCorrect = () => {
+    let text = `${t('alerts.correct')}`
+    correct(text)
+  }
+
+  const clickIncorrect = () => {
+    let text = 'incorrect'
+    wrong(text)
+  }
+
   return (
     <header className="text-white flex flex-row items-center justify-around p-3 bg-gradiante1">
       <div className="flex flex-row  items-center">
         <img className="w-16" src="src\assets\logo.png" alt="logo" />
         <h1 className="text-4xl font-semibold ml-5">Night Out</h1>
+        <Language />
+        <button onClick={clickCorrect}>{t('header.correct')}</button>
+        <button onClick={clickIncorrect}>{t('header.incorrect')}</button>
       </div>
       <nav>
         <Routes>
@@ -19,7 +41,7 @@ function Header() {
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center">
                 <li className="p-5">
                   <NavLink className="p-4 px-10" to="/">
-                    Home
+                  {t('header.home')}
                   </NavLink>
                 </li>
                 <li className="p-5">

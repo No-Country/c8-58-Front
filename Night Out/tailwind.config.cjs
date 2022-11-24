@@ -10,6 +10,7 @@ module.exports = {
       "black": "#000000",
       "white": "#FFFFFF",
       "lila": "rgba(126, 122, 172, 0.9)",
+      "violeta": "rgba(52, 48, 98, 0.94)",
       "gradiante1": "#0c1a43",
       "gradiante2": "#3b1993",
       "gradiante3": "#7b1dfd",

@@ -9,34 +9,38 @@ import LogIn from './components/LogIn/LogIn'
 import Publications from './components/Feed/Publications'
 import Navbar from './components/Feed/Navbar'
 import Filters from './components/Feed/Filters'
+import User from './components/User/User'
+
+import { AlertsProvider } from './components/alerts/Alerts'
 
 function App() {
   return (
     <div className="bg-fondo ">
+      <AlertsProvider>
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-            <main className="w-10/12 flex flex-col items-center mx-auto ">
-              <Introduction />
-              <HowItWorks />
-              <SignIn />
-            </main>
-      <Footer />
-      </>
-          }
-        ></Route>
-        <Route
-          path="/Sign-up"
-          element={
-            <>
-            <main className="w-10/12 flex flex-col items-center mx-auto ">
-              <SignUp />
-            </main>
-      <Footer />
-            </>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+              <main className="w-10/12 flex flex-col items-center mx-auto ">
+                <Introduction />
+                <HowItWorks />
+                <SignIn />
+              </main>
+        <Footer />
+        </>
+            }
+          ></Route>
+          <Route
+            path="/Sign-up"
+            element={
+              <>
+              <main className="w-10/12 flex flex-col items-center mx-auto ">
+                <SignUp />
+              </main>
+        <Footer />
+              </>
           }
         ></Route>
         <Route path="/Sign-In" element={
@@ -54,7 +58,13 @@ function App() {
           <Navbar />
           </main>
         }></Route>
+        <Route path="/User" element={
+          <main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
+            <User />
+          </main>
+        }></Route>
       </Routes>
+      </AlertsProvider>
     </div>
   );
 }

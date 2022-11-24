@@ -1,0 +1,22 @@
+{
+  "alerts":{
+    "correct": "Correcto",
+    "incorrect": "Incorrecto"
+  },
+  "language":{
+    "change": "Cambiar Idioma"
+  },
+  "header":{
+    "home": "Inicio",
+    "correct": "Correcto",
+    "incorrect": "Incorrecto"
+  },
+  "home":{
+    "title": "Night Out",
+    "test": "prueba"
+  },
+  "Post":{
+    "name": "Nombre: ",
+    "password": "Contraseña: "
+  }
+}

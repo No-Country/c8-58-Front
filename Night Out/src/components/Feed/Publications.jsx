@@ -1,20 +1,21 @@
 import React from "react";
-import Posts from './Posts'
+import Posts from "./Posts";
 
 function Publications() {
-  
   return (
     <div className="w-4/5 bg-lila">
       <div className="flex flex-row justify-between items-center w-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 p-5">
         <h2 className="text-white text-4xl">Home</h2>
         <div className="flex flex-row text-white items-center justify-around">
-        <p className="text-2xl pr-5"><span>Evento</span> en <span>Lugar</span></p>
-    <button className="w-10">
-          <img src="src\assets\filtroBlanco.png" alt="filtros" />
-        </button>
-    </div>
+          <p className="text-2xl pr-5">
+            <span>Evento</span> en <span>Lugar</span>
+          </p>
+          <button className="w-10">
+            <img src="src\assets\filtroBlanco.png" alt="filtros" />
+          </button>
+        </div>
       </div>
-      <div className=" p-5">
+      <div className=" p-5 mb-3">
         <div className="flex flex-row justify-evenly mb-5">
           <div>
             <img
@@ -58,11 +59,8 @@ function Publications() {
             maxLength="100"
             className="w-full rounded-3xl p-5 bg-gray text-black max-h-16 resize-none outline-none"
           ></textarea>
-          <button className="absolute w-12 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-2 top-1/2 -right-3">
-          <img
-            src="src\assets\flechaBlanca.png"
-            alt="Subir"
-          />
+          <button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 top-1/2 -right-3">
+            <img src="src\assets\flechaBlanca.png" alt="Subir" />
           </button>
         </div>
       </div>
@@ -77,7 +75,6 @@ function Publications() {
         <Posts />
         <Posts />
         <Posts />
-
       </div>
     </div>
   );
