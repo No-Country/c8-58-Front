@@ -6,7 +6,7 @@ import {
 	POST_PUBLICATIONS,
 	GET_PROVINCES,
 	GET_MUNICIPALITIES
-} from '../actions/action';
+} from '../actions';
 
 const initialState = {
 	user: [],
@@ -16,7 +16,7 @@ const initialState = {
 	municipalities: []
 };
 
-export function reducers(state = initialState, { payload, type }) {
+export default function reducers(state = initialState, { payload, type }) {
 	switch (type) {
 		case GET_USER:
 			return {
