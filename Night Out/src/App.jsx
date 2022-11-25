@@ -11,33 +11,36 @@ import Navbar from './components/Feed/Navbar'
 import Filters from './components/Feed/Filters'
 import User from './components/User/User'
 
+import { AlertsProvider } from './components/alerts/Alerts'
+
 function App() {
   return (
     <div className="bg-fondo ">
+      <AlertsProvider>
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-            <main className="w-10/12 flex flex-col items-center mx-auto ">
-              <Introduction />
-              <HowItWorks />
-              <SignIn />
-            </main>
-      <Footer />
-      </>
-          }
-        ></Route>
-        <Route
-          path="/Sign-up"
-          element={
-            <>
-            <main className="w-10/12 flex flex-col items-center mx-auto ">
-              <SignUp />
-            </main>
-      <Footer />
-            </>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+              <main className="w-10/12 flex flex-col items-center mx-auto ">
+                <Introduction />
+                <HowItWorks />
+                <SignIn />
+              </main>
+        <Footer />
+        </>
+            }
+          ></Route>
+          <Route
+            path="/Sign-up"
+            element={
+              <>
+              <main className="w-10/12 flex flex-col items-center mx-auto ">
+                <SignUp />
+              </main>
+        <Footer />
+              </>
           }
         ></Route>
         <Route path="/Sign-In" element={
@@ -61,6 +64,7 @@ function App() {
           </main>
         }></Route>
       </Routes>
+      </AlertsProvider>
     </div>
   );
 }
