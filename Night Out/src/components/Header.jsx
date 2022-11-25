@@ -49,7 +49,7 @@ function Header() {
                     className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10"
                     href="#logear"
                   >
-                    Sign In
+                    {t('header.signin')}
                   </a>
                 </li>
               </ul>
@@ -61,7 +61,7 @@ function Header() {
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center">
                 <li className="p-5">
                   <NavLink className="p-4 px-10" to="/">
-                    Home
+                  {t('header.home')}
                   </NavLink>
                 </li>
                 <li className="p-5">
@@ -69,7 +69,7 @@ function Header() {
                     className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10"
                     to="/Sign-In"
                   >
-                    Sign In
+                    {t('header.signin')}
                   </NavLink>
                 </li>
               </ul>
@@ -81,7 +81,7 @@ function Header() {
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center">
                 <li className="p-5">
                   <NavLink className="p-4 px-10" to="/">
-                    Home
+                  {t('header.home')}
                   </NavLink>
                 </li>
                 <li className="p-5">
@@ -89,7 +89,7 @@ function Header() {
                     className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10"
                     to="/Sign-In"
                   >
-                    Sign In
+                    {t('header.signin')}
                   </NavLink>
                 </li>
               </ul>

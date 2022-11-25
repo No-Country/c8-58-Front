@@ -11,6 +11,7 @@ const [t, i18n] = useTranslation('global')
     setLang(language.target.value)
     localStorage.setItem('language', language.target.value)
   }
+  const idioma = localStorage.getItem('language')
 // A donde vaya el texto a traducir hay que importar "import { useTranslation } from 'react-i18next'"
 // Y crear una constante "const [t] = useTranslation('global')"; i18n es solo para donde este el select de cambio de idioma
 // Los textos se modifican en la carpeta transtlation->en/es->global.json
@@ -21,7 +22,7 @@ const [t, i18n] = useTranslation('global')
   return (
     <>
     <b>{t('language.change')}</b>
-    <select onChange={(e) => handleLanguage(e)}>
+    <select onChange={(e) => handleLanguage(e)} defaultValue={idioma}>
       <option value='en'>EN</option>
       <option value='es'>ES</option>
     </select>
