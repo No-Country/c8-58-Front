@@ -30,8 +30,8 @@ function Header() {
         <img className="w-16" src="src\assets\logo.png" alt="logo" />
         <h1 className="text-4xl font-semibold ml-5">Night Out</h1>
         <Language />
-        <button onClick={clickCorrect}>{t('header.correct')}</button>
-        <button onClick={clickIncorrect}>{t('header.incorrect')}</button>
+        {/* <button onClick={clickCorrect}>{t('header.correct')}</button>
+        <button onClick={clickIncorrect}>{t('header.incorrect')}</button> */}
       </div>
       <nav>
         <Routes>

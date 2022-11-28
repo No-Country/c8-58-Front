@@ -22,7 +22,11 @@ const [t, i18n] = useTranslation('global')
   return (
     <>
     <b>{t('language.change')}</b>
-    <select onChange={(e) => handleLanguage(e)} defaultValue={idioma}>
+    <select 
+      onChange={(e) => handleLanguage(e)} 
+      defaultValue={idioma}
+      className="text-black"
+    >
       <option value='en'>EN</option>
       <option value='es'>ES</option>
     </select>
