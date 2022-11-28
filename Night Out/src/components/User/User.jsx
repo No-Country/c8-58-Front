@@ -4,10 +4,10 @@ import Posts from '../Feed/Posts'
 function User() {
   return (
     <div className='text-white w-4/5'>
-        <div>
+        <div className='bg-gradient-to-b from-gradiante1 via-gradiante2 to-gradiante4'>
             <img src="" alt="Portada" />
-            <div>
-                <img src="" alt="Foto Perfil" />
+            <div className='flex flex-row'>
+                <img src="src\assets\logo.png" alt="Foto Perfil" className='rounded-full w-48'/>
                 <div>
                 <h2>Moderador</h2>
                 <p>@Moderador</p>

@@ -1,7 +1,7 @@
 import Header from "./components/Header";
-import Introduction from "./components/Home/Introduction";
-import HowItWorks from "./components/Home/HowItWorks";
-import SignIn from "./components/Home/SignIn";
+import Introduction from "./components/Home/Introduction/Introduction";
+import HowItWorks from "./components/Home/HowItWorks/HowItWorks";
+import SignIn from "./components/Home/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
