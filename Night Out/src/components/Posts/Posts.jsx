@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Posts.module.css';
 
 function Posts({ id, name, image, event, text, location }) {
 	return (
@@ -19,8 +20,8 @@ function Posts({ id, name, image, event, text, location }) {
 					</p>
 				</div>
 
-				<div className="relative">
-					<p className=" rounded-3xl p-5 m-5 bg-gray text-black ">{text}</p>
+				<div className="relative m-5">
+					<p className=" rounded-3xl  p-5  bg-gray text-black ">{text}</p>
 					<button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 top-1/2 right-2">
 						<img
 							className=""
@@ -29,7 +30,7 @@ function Posts({ id, name, image, event, text, location }) {
 						/>
 					</button>
 				</div>
-				<div>
+				<div className={styles.img_container}>
 					<img src={image} alt="not found" />
 				</div>
 				<span className="bg-black h-1 w-full block mt-16"></span>
