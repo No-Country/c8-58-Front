@@ -1,15 +1,17 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
     <div className="bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50">
       <div>
       <div className="self-center flex flex-col items-center justify-evenly mt-4">
+        <Link to="/User">
         <img
           src="src\assets\candado.svg"
           alt="foto perfil"
           className="w-20 rounded-full"
-        />
+        /></Link>
         <p className="text-xl">Nombre</p>
         <div className="flex flex-row mb-4">
           <p className="text-sm text-gray">

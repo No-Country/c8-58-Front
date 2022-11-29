@@ -1,18 +1,21 @@
 import React from "react";
-import { Form, NavLink, Route, Routes } from "react-router-dom";
+import { Form, NavLink, Route, Routes, useNavigate } from "react-router-dom";
 
 import { useTranslation } from 'react-i18next'
 import Language from './language/Language'
 
 import { Alerts } from './alerts/Alerts'
+import { UserAuth } from './firebase/context/AuthContext'
 
 {
   /*import { NavbarHamburguesa } from './NavbarHamburguesa'*/
 }
 
 function Header() {
+  const navigate = useNavigate()
   const [t] = useTranslation('global')
   const { correct, wrong } = Alerts()
+  const { logOut } = UserAuth()
 
   const clickCorrect = () => {
     let text = `${t('alerts.correct')}`
@@ -24,12 +27,30 @@ function Header() {
     wrong(text)
   }
 
+  const logOutSesion = async() => {
+    try {
+      await logOut()
+      await correct('Sesion Cerrada')
+      await localStorage.removeItem('email')      
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const existUser = localStorage.getItem('email')
+
   return (
     <header className="text-white flex flex-row items-center justify-around p-3 bg-gradiante1">
       <div className="flex flex-row  items-center">
         <img className="w-16" src="src\assets\logo.png" alt="logo" />
         <h1 className="text-4xl font-semibold ml-5">Night Out</h1>
         <Language />
+        {
+          existUser ? 
+          <button onClick={logOutSesion}>Log Out</button>:
+          ""
+        }
         {/* <button onClick={clickCorrect}>{t('header.correct')}</button>
         <button onClick={clickIncorrect}>{t('header.incorrect')}</button> */}
       </div>
