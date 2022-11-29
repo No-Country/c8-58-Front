@@ -1,5 +1,6 @@
 import {
 	GET_USER,
+	GET_USER_DETAIL,
 	POST_USER,
 	GET_PUBLICATIONS,
 	FILTER_BY_QUERY,
@@ -10,6 +11,7 @@ import {
 
 const initialState = {
 	user: [],
+	userDetail: [],
 	allPublications: [],
 	currentPublications: [],
 	provinces: [],
@@ -23,6 +25,11 @@ export default function reducers(state = initialState, { payload, type }) {
 				...state,
 				user: payload
 			};
+		case GET_USER_DETAIL:
+		return {
+			...state,
+			userDetail: payload
+		};
 		case POST_USER:
 			return {
 				...state,
