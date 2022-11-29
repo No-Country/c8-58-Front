@@ -12,7 +12,7 @@ function Footer() {
     </ul>
     <div className="w-1/3 mt-16 flex flex-col items-center">
       <h2 className="text-2xl font-medium mb-3">Subscribe to our newsletter!</h2>
-      <form action="" className="flex flex-row items-center w-full" autocomplete="off">
+      <form action="" className="flex flex-row items-center w-full" autoComplete="off">
       <div className="w-3/4 flex flex-row flex-nowrap bg-gray rounded-l-full">
           <img className="h-8 m-3" src="src\assets\sobre.svg" alt="email" />
           <input type="email" name="mail" id="mail" className="w-full colorNegro rounded-r-full outline-none text-xl bg-gray"/>

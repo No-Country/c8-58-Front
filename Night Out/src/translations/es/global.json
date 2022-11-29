@@ -6,17 +6,51 @@
   "language":{
     "change": "Cambiar Idioma"
   },
-  "header":{
-    "home": "Inicio",
-    "correct": "Correcto",
-    "incorrect": "Incorrecto"
+  "filters":{
+
+  },
+  "navbar":{
+    
+  },
+  "Post":{
+    "name": "Nombre: ",
+    "password": "Contraseña: "
+  },
+  "publications":{
+    
   },
   "home":{
     "title": "Night Out",
     "test": "prueba"
   },
-  "Post":{
-    "name": "Nombre: ",
-    "password": "Contraseña: "
+  "hiw":{
+
+  },
+  "introduction":{
+
+  },
+  "signin":{
+
+  },
+  "login":{
+
+  },
+  "pruebas":{
+
+  },
+  "signup":{
+
+  },
+  "user":{
+
+  },
+  "footer":{
+
+  },
+  "header":{
+    "home": "Inicio",
+    "signin": "Iniciar Sesion",
+    "correct": "Correcto",
+    "incorrect": "Incorrecto"
   }
 }
