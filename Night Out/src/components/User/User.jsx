@@ -23,10 +23,6 @@ function User() {
 				<h2 className="text-2xl bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 p-3 rounded-t-3xl pl-5">
 					Posts
 				</h2>
-				<Posts />
-				<Posts />
-				<Posts />
-				<Posts />
 			</div>
 		</div>
 	);
