@@ -5,6 +5,17 @@ import { GlobalContext } from "../../Context/GlobalContext";
 function Filters() {
 
   const { FiltrosMostrado, setFiltrosMostrado } = useContext(GlobalContext)
+  const mostrarFiltros = () => {
+		if ( FiltrosMostrado === true ) {
+			setFiltrosMostrado(false)
+		  console.log("Ocultando Filtros")
+		}
+		else {
+			setFiltrosMostrado(true)
+		  console.log("Mostrando Filtros")
+		}
+	  }
+
 
   return (
     <div className={FiltrosMostrado === false ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10" : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10"}>
@@ -14,7 +25,7 @@ function Filters() {
           <p className="text-2xl pr-5">
             <span>Evento</span> en <span>Lugar</span>
           </p>
-          <button className="w-10">
+          <button className="w-10" onClick={mostrarFiltros}>
             <img src="src\assets\filtroBlanco.png" alt="filtros" />
           </button>
         </div>

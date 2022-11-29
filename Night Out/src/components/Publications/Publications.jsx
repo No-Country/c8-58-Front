@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Posts from '../Posts/Posts';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPublications } from '../../redux/actions';
+import { useContext } from 'react';
+import { GlobalContext } from '../../Context/GlobalContext';
 
 function Publications() {
 	const { allPublications } = useSelector((state) => state);
@@ -10,6 +12,18 @@ function Publications() {
 	useEffect(() => {
 		dispatch(getPublications());
 	}, []);
+
+	const { FiltrosMostrado, setFiltrosMostrado } = useContext(GlobalContext)
+	const mostrarFiltros = () => {
+		if ( FiltrosMostrado === true ) {
+			setFiltrosMostrado(false)
+		  console.log("Ocultando Filtros")
+		}
+		else {
+			setFiltrosMostrado(true)
+		  console.log("Mostrando Filtros")
+		}
+	  }
 
 	return (
 		<>
@@ -20,7 +34,7 @@ function Publications() {
 						<p className="text-2xl pr-5">
 							<span>Evento</span> en <span>Lugar</span>
 						</p>
-						<button className="w-10">
+						<button className="w-10" onClick={mostrarFiltros}>
 							<img src="src\assets\filtroBlanco.png" alt="filtros" />
 						</button>
 					</div>
@@ -69,7 +83,7 @@ function Publications() {
 							maxLength="100"
 							className="w-full rounded-3xl p-5 bg-gray text-black max-h-16 resize-none outline-none"
 						></textarea>
-						<button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 top-1/2 -right-3">
+						<button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 top-1/2 -right-3 hover:animate-bounce">
 							<img src="src\assets\flechaBlanca.png" alt="Subir" />
 						</button>
 					</div>
