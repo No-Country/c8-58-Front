@@ -1,9 +1,14 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from 'react-router-dom'
+import { GlobalContext } from "../../Context/GlobalContext";
 
 function Navbar() {
+
+  let {NavbarMostrado} = useContext(GlobalContext)
+
   return (
-    <div className="bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50">
+    <div className={NavbarMostrado === false ? "bg-gradiante1 fixed text-white flex flex-col justify-between NavbarOculto z-50" : "bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50"}>
       <div>
       <div className="self-center flex flex-col items-center justify-evenly mt-4">
         <Link to="/User">

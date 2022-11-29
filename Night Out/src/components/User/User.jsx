@@ -1,10 +1,12 @@
 import React from 'react';
 import Posts from '../Posts/Posts';
+import {Link} from 'react-router-dom'
 
 function User() {
   return (
     <div className='text-white w-4/5'>
-        <div className='bg-gradient-to-b from-gradiante1 via-gradiante2 to-gradiante4 mb-10 rounded-b-3xl overflow-hidden'>
+        <div className='bg-gradient-to-b from-gradiante1 via-gradiante2 to-gradiante4 mb-10 rounded-b-3xl overflow-hidden relative'>
+            <Link to="/Feed"><img className='w-10 absolute top-3 left-3' src="src\assets\flechaBlancaDerecha.png" alt="Feed" /></Link>
             <img className='w-full rounded-b-3xl ' src="src\assets\PortadaPrueba.png" alt="Portada" />
             <div className='p-8 relative'>
             <div className='flex flex-row absolute -top-36 w-11/12 items-end justify-between'>

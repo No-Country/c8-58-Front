@@ -6,6 +6,9 @@ import Language from './language/Language'
 
 import { Alerts } from './alerts/Alerts'
 import { UserAuth } from './firebase/context/AuthContext'
+import { useContext } from "react";
+import { GlobalContext } from "../Context/GlobalContext";
+import Navbar from "./Feed/Navbar";
 
 {
   /*import { NavbarHamburguesa } from './NavbarHamburguesa'*/
@@ -39,6 +42,19 @@ function Header() {
   }
 
   const existUser = localStorage.getItem('email')
+
+  let {NavbarMostrado, setNavbarMostrado} = useContext(GlobalContext)
+  const mostrarNavbar = () => {
+    if ( NavbarMostrado === true ) {
+      setNavbarMostrado(false)
+      console.log("Ocultando Navbar")
+    }
+    else {
+      setNavbarMostrado(true)
+      console.log("Mostrando Navbar")
+    }
+  }
+
 
   return (
     <header className="text-white flex flex-row items-center justify-around p-3 bg-gradiante1">
@@ -134,7 +150,7 @@ function Header() {
                   </form>{" "}
                 </li>
                 <li className="p-5">
-                  <button>
+                  <button onClick={mostrarNavbar}>
                     <img
                       src="src\assets\menuBlanco.png"
                       alt="menu"
