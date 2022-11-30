@@ -34,7 +34,7 @@ const getUserDetail = (id) => {
 
 const postUser = (payload) => {
 	return async function (dispatch) {
-		await axios.get(`${ROUTE}users`, payload);
+		await axios.post(`${ROUTE}users`, payload);
 		return dispatch({
 			type: POST_USER,
 			payload
