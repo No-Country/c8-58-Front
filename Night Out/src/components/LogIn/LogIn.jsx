@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function LogIn() {
   return (
-    <div className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 mt-16 " id="logear">
+    <div className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 mt-16 " id="">
         <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl m-10"> Sign In</h2>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl p-10 flex flex-col justify-evenly items-center w-1/2 mb-10">
         <form className="flex flex-col w-full " action="">
