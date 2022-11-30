@@ -71,6 +71,7 @@ function App() {
 							element={
 								<main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
 									<User />
+									<Navbar />
 								</main>
 							}
 						></Route>
