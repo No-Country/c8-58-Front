@@ -33,7 +33,7 @@ function Posts({ id, name, image, event, text, location }) {
 				<div className={styles.img_container}>
 					<img src={image} alt="not found" />
 				</div>
-				<span className="bg-black h-1 w-full block mt-16"></span>
+				<span className="bg-black h-0.1 w-full block mt-16"></span>
 			</div>
 		</>
 	);

@@ -57,10 +57,10 @@ function Header() {
 
 
   return (
-    <header className="text-white flex flex-row items-center justify-around p-3 bg-gradiante1">
+    <header className={ NavbarMostrado === false ? "text-white flex flex-row items-center justify-around bg-gradiante1" : "text-white flex flex-row items-center justify-around  bg-gradiante1 sticky top-0 z-10" }>
       <div className="flex flex-row  items-center">
-        <img className="w-16" src="src\assets\logo.png" alt="logo" />
-        <h1 className="text-4xl font-semibold ml-5">Night Out</h1>
+        <img className="h-10" src="src\assets\logo.png" alt="logo" />
+        <h1 className="text-2xl font-semibold ml-5">Night Out</h1>
         <Language />
         {
           existUser ? 
@@ -83,7 +83,7 @@ function Header() {
                 </li>
                 <li className="p-5">
                   <a
-                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10"
+                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white"
                     href="#logear"
                   >
                     {t('header.signin')}
@@ -103,7 +103,7 @@ function Header() {
                 </li>
                 <li className="p-5">
                   <NavLink
-                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10"
+                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white"
                     to="/Sign-In"
                   >
                     {t('header.signin')}
@@ -123,7 +123,7 @@ function Header() {
                 </li>
                 <li className="p-5">
                   <NavLink
-                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10"
+                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 "
                     to="/Sign-In"
                   >
                     {t('header.signin')}
@@ -133,13 +133,13 @@ function Header() {
             }
           ></Route>
           <Route
-            path="/:ruta"
+            path="/:ruta/*"
             element={
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center">
-                <li className="p-5">
-                  <form className="flex flex-row bg-gray p-2 rounded-full">
+                <li className="">
+                  <form className="flex flex-row bg-gray p-2 rounded-full items-center">
                     <img
-                      className="w-10 mr-3"
+                      className="h-5 mr-3"
                       src="src\assets\lupa.svg"
                       alt="lupa"
                     />
@@ -154,7 +154,7 @@ function Header() {
                     <img
                       src="src\assets\menuBlanco.png"
                       alt="menu"
-                      className="w-10"
+                      className="h-8"
                     />
                   </button>
                 </li>

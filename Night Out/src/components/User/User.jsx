@@ -17,7 +17,6 @@ function User() {
                 <p>@Moderador</p>
                 </div>
                 </div>
-                <button className='bg-gray rounded-full  text-black text-2xl font-semibold p-5 pl-10 pr-10 text-center hover:bg-white'>Edit</button>
             </div>
             <div className='mt-20'>
                 <h2 className='text-2xl font-semibold'>Descripción</h2>

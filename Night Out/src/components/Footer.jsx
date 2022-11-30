@@ -17,7 +17,7 @@ function Footer() {
           <img className="h-8 m-3" src="src\assets\sobre.svg" alt="email" />
           <input type="email" name="mail" id="mail" className="w-full colorNegro rounded-r-full outline-none text-xl bg-gray"/>
           </div>
-        <button className="w-1/4 h-14 bg-gradient-to-r from-gradiante3 via-gradiante2 to-gradiante1 pl-6 pr-6 flex justify-center items-center rounded-r-full" type="submit"><img className="w-10" src="src\assets\flechaBlancaDerecha.png" alt="Subscribe" /></button>
+        <button className="w-1/4 h-14 bg-gradient-to-r from-gradiante3 via-gradiante2 to-gradiante1 pl-6 pr-6 flex justify-center items-center rounded-r-full group" type="submit"><img className="w-10 group-hover:animate-pulse" src="src\assets\flechaBlancaDerecha.png" alt="Subscribe" /></button>
       </form>
     </div>
     <div className="flex flex-col items-center justify-center mt-16 mb-8">

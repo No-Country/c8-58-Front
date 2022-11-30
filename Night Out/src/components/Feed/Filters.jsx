@@ -20,12 +20,12 @@ function Filters() {
   return (
     <div className={FiltrosMostrado === false ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10" : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10"}>
       <div className="flex flex-row items-center justify-between w-full">
-        <h2 className="text-4xl text-white">Filters</h2>
+        <h2 className="text-2xl text-white">Filters</h2>
         <div className="flex flex-row text-white items-center justify-around">
-          <p className="text-2xl pr-5">
+          <p className="text-xl pr-5">
             <span>Evento</span> en <span>Lugar</span>
           </p>
-          <button className="w-10" onClick={mostrarFiltros}>
+          <button className="w-8" onClick={mostrarFiltros}>
             <img src="src\assets\filtroBlanco.png" alt="filtros" />
           </button>
         </div>
@@ -81,7 +81,7 @@ function Filters() {
           </option>
         </select>
       </div>
-      <button className="bg-gray p-3 text-2xl rounded-full mt-5 w-2/6 hover:bg-white">
+      <button className="bg-gray p-3 text-2xl rounded-full mt-5 w-2/6 hover:bg-white" onClick={mostrarFiltros}>
         Search
       </button>
     </div>

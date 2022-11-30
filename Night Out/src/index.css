@@ -15,7 +15,7 @@ select:-webkit-autofill:focus {
 }
 
 .NavbarOculto {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 78px);
   width: 18%;
   /* left: 82%; */
   left: 100%;
@@ -23,7 +23,7 @@ select:-webkit-autofill:focus {
 }
 
 .Navbar {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 78px);
   width: 18%;
   left: 82%;
   transition: all 0.5s ease-in-out;

@@ -28,11 +28,9 @@ function Navbar() {
       <div>
         
       <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Settings</h2>
+      <Link to="/Settings/User"><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Settings</h2></Link>
       <span className="bg-lineaNavbar h-1 w-full block"></span>
       <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Direct Messages</h2>
-      <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Help</h2>
       <span className="bg-lineaNavbar h-1 w-full block"></span>
       <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Log Out</h2>
       <span className="bg-lineaNavbar h-1 w-full block"></span>
