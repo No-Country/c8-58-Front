@@ -277,7 +277,7 @@ function SignUp() {
               alt="imagen dni"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-5"
               type="number"
               name="DNI"
               id="dni"
@@ -307,7 +307,7 @@ function SignUp() {
               alt="imagen calendario"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-5"
               type="date"
               name="cumple"
               id="cumple"
@@ -321,7 +321,7 @@ function SignUp() {
             </label>
           </div>
           <button
-            className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold"
+            className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold hover:bg-white"
             type='submit'
           >
             Sign up!
