@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, NavLink, Route, Routes, useNavigate } from "react-router-dom";
+
+import { getUserDetail } from '../redux/actions/index'
 
 import { useTranslation } from 'react-i18next'
 import Language from './language/Language'
@@ -18,30 +21,32 @@ function Header() {
   const navigate = useNavigate()
   const [t] = useTranslation('global')
   const { correct, wrong } = Alerts()
-  const { logOut } = UserAuth()
+  const { logOut, user } = UserAuth()
 
-  const clickCorrect = () => {
-    let text = `${t('alerts.correct')}`
-    correct(text)
-  }
-
-  const clickIncorrect = () => {
-    let text = 'incorrect'
-    wrong(text)
-  }
+  const dispatch = useDispatch()
+  const userData = useSelector(state => state.userDetail)
 
   const logOutSesion = async() => {
     try {
       await logOut()
-      await correct('Sesion Cerrada')
-      await localStorage.removeItem('email')      
+      await correct('Sesion Cerrada')  
       navigate('/')
     } catch (error) {
       console.log(error)
     }
   }
 
-  const existUser = localStorage.getItem('email')
+  const existUser = localStorage.getItem('id')
+
+useEffect(() => {
+  const id = localStorage.getItem('id')
+  const user = async() => {
+    if(id){
+      await dispatch(getUserDetail(id))
+    }
+  }
+  user()
+},[])
 
   let {NavbarMostrado, setNavbarMostrado} = useContext(GlobalContext)
   const mostrarNavbar = () => {
@@ -63,12 +68,15 @@ function Header() {
         <h1 className="text-2xl font-semibold ml-5">Night Out</h1>
         <Language />
         {
-          existUser ? 
-          <button onClick={logOutSesion}>Log Out</button>:
+          user ? 
+          <span>
+            {
+              userData[0] !== undefined ? `Welcome ${userData[0].name}` : ""
+            }
+            <button onClick={logOutSesion}>Log Out</button>
+          </span> :
           ""
         }
-        {/* <button onClick={clickCorrect}>{t('header.correct')}</button>
-        <button onClick={clickIncorrect}>{t('header.incorrect')}</button> */}
       </div>
       <nav>
         <Routes>

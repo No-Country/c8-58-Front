@@ -4,6 +4,7 @@ export const GET_USER = 'GET_USER';
 export const GET_USER_DETAIL = 'GET_USER_DETAIL';
 export const POST_USER = 'POST_USER';
 export const GET_PUBLICATIONS = 'GET_PUBLICATIONS';
+export const GET_PUBLICATIONS_USER = 'GET_PUBLICATIONS_USER';
 export const GET_PUBLICATION_DETAIL = 'GET_PUBLICATION_DETAIL';
 export const FILTER_BY_QUERY = 'FILTER_BY_QUERY';
 export const POST_PUBLICATIONS = 'POST_PUBLICATIONS';
@@ -34,7 +35,7 @@ const getUserDetail = (id) => {
 
 const postUser = (payload) => {
 	return async function (dispatch) {
-		await axios.get(`${ROUTE}users`, payload);
+		await axios.post(`${ROUTE}users`, payload);
 		return dispatch({
 			type: POST_USER,
 			payload
@@ -72,6 +73,16 @@ const getPublications = () => {
 		return dispatch({
 			type: GET_PUBLICATIONS,
 			payload: publications.data
+		});
+	};
+};
+
+const getPublicationsUser = () => {
+	return async function (dispatch) {
+		let userPublications = await axios.get(`${ROUTE}publications/user/${id}`);
+		return dispatch({
+			type: GET_PUBLICATIONS_USER,
+			payload: userPublications.data
 		});
 	};
 };
@@ -163,6 +174,7 @@ export {
 	putBan,
 	deleteUser,
 	getPublications,
+	getPublicationsUser,
 	getPublicationDetail,
 	filterByQuery,
 	postPublications,

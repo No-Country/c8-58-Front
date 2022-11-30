@@ -1,49 +1,202 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Helmet } from "react-helmet"
 import { useNavigate } from 'react-router-dom'
+
+import { postUser, getUserDetail } from '../../redux/actions/index'
 
 import { UserAuth } from '../firebase/context/AuthContext'
 import { Alerts } from '../alerts/Alerts'
+
+function validate(user) {
+  let error = {}
+  
+    // if(user.username && user.username.length < 8) error.username = 'El nombre debe contener al menos 8 caracteres'
+
+    // if(user.pass1 && user.pass1.length < 6) error.pass1 = 'La contraseña debe contener al menos 6 caracteres'
+
+    // if(user.pass2 && user.pass2.length < 6) error.pass2 = 'La contraseña debe contener al menos 6 caracteres'
+
+    //if((pass2 && pass2 !== pass1)) error.pass = 'No coinciden las contraseñas'
+
+    // if(user.DNI){
+    //   const dniString = user.DNI.toString()
+    //   if(dniString.length !== 8) error.DNI = 'Ingrese un DNI valido'
+    // }
+
+    // if(user.telefono && user.telefono.length < 10) error.telefono = 'El telefono debe contener al menos 8 caracteres'
+
+  //return error
+}
 
 function SignUp() {
   const { createUserEmailPassword } = UserAuth()
   const { correct, wrong } = Alerts()
 
+  const dispatch = useDispatch()
+  const [user, setUser] = useState({
+    name:"",
+    password:"",
+    dni:"",
+    years:"",
+    email:"",
+    cel:"",
+    image:""
+  })
+  const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [pass1, setPass1] = useState("")
+  const [pass2, setPass2] = useState("")
+  const [dni, setDni] = useState("")
+  const [telefono, setTelefono] = useState("")
+  const [cumple, setCumple] = useState("")
+
+  const [error, setError] = useState("")
 
   const navigate = useNavigate()
+
+  const handleChangeUsername = (e) => {
+    setUsername(e.target.value)
+    setError(validate({
+      ...user,
+      username: e.target.value
+    }))
+  }
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value)
+    setError(validate({
+      ...user,
+      mail: e.target.value
+    }))
+  }
+
+  const handleChangePass1 = (e) => {
+    setPass1(e.target.value)
+    setError(validate({
+      ...user,
+      pass1: e.target.value
+    }))
+    console.log(pass1)
+  }
+
+  const handleChangePass2 = (e) => {
+    setPass2(e.target.value)
+    setError(validate({
+      ...user,
+      pass2: e.target.value
+    }))
+    console.log(pass2)
+  }
+
+  const handleChangeDni = (e) => {
+    setDni(e.target.value)
+    setError(validate({
+      ...user,
+      DNI: e.target.value
+    }))
+  }
+
+  const handleChangeTelefono = (e) => {
+    setTelefono(e.target.value)
+    setError(validate({
+      ...user,
+      telefono: e.target.value
+    }))
+  }
+
+  const handleChangeCumple = (e) => {
+    setCumple(e.target.value)
+    setError(validate({
+      ...user,
+      cumple: e.target.value
+    }))
+  }
   
   const handleSubmit = async(e) => {
     e.preventDefault()
-    try {
-      const userData = await createUserEmailPassword(email, password)
-      if(userData !== undefined) {
-        localStorage.setItem('email', email)
-        correct('Registrado')
+    if(pass1 === pass2){
+      //Sino, sacar lo de validate y hcaer los ifs aca y que el ultimo sea el del posr user
+      if(!error){
+        try {
+          const password = pass1
+          console.log(password)
+          const userData = await createUserEmailPassword(email, password)
+          if(userData !== undefined) {
+            await dispatch(postUser({
+              id: userData.user.uid,
+              name: username,
+              password: password,
+              email: email,
+              cel: telefono,
+              years: cumple,
+              dni: dni,
+              image: ""
+            }))
+            localStorage.setItem('id', userData.user.uid)
+            localStorage.setItem('email', email)
+            correct('Registrado')
+            await dispatch(getUserDetail(userData.user.uid))
+          }
+          navigate('/')
+        } catch(error) {
+          console.log(error.code)
+          if(error.code === 'auth/missing-email'){
+            const text = error.code 
+            wrong(text)
+          }
+          if(error.code === 'auth/invalid-email'){
+            const text = error.code 
+            wrong(text)
+          }
+          if(error.code === 'auth/email-already-in-use'){
+            const text = error.code 
+            wrong(text)
+          }
+          if(error.code === 'auth/internal-error'){//cuando pondo email y no contraseña
+            const text = error.code 
+            wrong(text)
+          }
+          if(error.code === 'auth/weak-password'){
+            const text = error.code 
+            wrong(text)
+          }
+        }
+      } 
+      else if(error.username){
+        const text = 'username'
+        wrong(text)
       }
-      navigate('/')
-    } catch(error) {
-      console.log(error.code)
-      if(error.code === 'auth/missing-email'){
+      else if(error.mail){
         const text = error.code 
         wrong(text)
       }
-      if(error.code === 'auth/invalid-email'){
+      else if(error.pass1){
+        const text = `{user.pass1}`  
+        wrong(text)
+      }
+      else if(error.pass2){
+        const text = `{user.pass2}` 
+        wrong(text)
+      }
+      // else if(error.pass){
+      //   const text = `${pass2} ${pass1}`  
+      //   wrong(text)
+      // }
+      else if(error.DNI){
         const text = error.code 
         wrong(text)
       }
-      if(error.code === 'auth/email-already-in-use'){
+      else if(error.telefono){
         const text = error.code 
         wrong(text)
       }
-      if(error.code === 'auth/internal-error'){//cuando pondo email y no contraseña
+      else if(error.cumple){
         const text = error.code 
         wrong(text)
       }
-      if(error.code === 'auth/weak-password'){
-        const text = error.code 
-        wrong(text)
-      }
+    } else {
+      wrong('las contraseñas no coinciden')      
     }
   }
 
@@ -124,7 +277,7 @@ function SignUp() {
               alt="imagen dni"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-5"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="number"
               name="DNI"
               id="dni"
@@ -154,7 +307,7 @@ function SignUp() {
               alt="imagen calendario"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-5"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="date"
               name="cumple"
               id="cumple"
@@ -168,14 +321,14 @@ function SignUp() {
             </label>
           </div>
           <button
-            className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold hover:text-white"
+            className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold"
             type='submit'
           >
             Sign up!
           </button>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 

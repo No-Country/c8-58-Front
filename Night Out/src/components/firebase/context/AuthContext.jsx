@@ -18,9 +18,14 @@ import {
   return user
  }
 
+ const signInEmailPassword = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password)
+ }
+
  const logOut = () => {
   signOut(auth)
-  window.localStorage.removeItem('username')
+  window.localStorage.removeItem('email')
+  window.localStorage.removeItem('id')
  }
 
  useEffect(() => {
@@ -34,7 +39,7 @@ import {
  }, [])
 
  return(
-  <AuthContext.Provider value = {{ createUserEmailPassword, logOut, user }}>
+  <AuthContext.Provider value = {{ createUserEmailPassword, logOut, user, signInEmailPassword }}>
     {children}
   </AuthContext.Provider>
  )
