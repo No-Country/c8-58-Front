@@ -60,7 +60,6 @@ useEffect(() => {
     }
   }
 
-
   return (
     <header className="text-white flex flex-row items-center justify-around p-3 bg-gradiante1">
       <div className="flex flex-row  items-center">

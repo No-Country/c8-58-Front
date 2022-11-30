@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"
+
+import { getUserDetail } from "../../../redux/actions";
 
 import { UserAuth } from '../../firebase/context/AuthContext'
 import { Alerts } from '../../alerts/Alerts'
@@ -9,6 +12,7 @@ function SignIn() {
   const { correct, wrong } = Alerts()
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -18,11 +22,9 @@ function SignIn() {
     e.preventDefault()
     setError('')
     try {
-      console.log(email)
-      console.log(password)
       const userSignIn = await signInEmailPassword(email, password)
-      console.log(userSignIn)
       await correct('Sesion Iniciada')
+      await dispatch(getUserDetail(userSignIn.user.uid))
       localStorage.setItem('id', userSignIn.user.uid)
       localStorage.setItem('email', email)
       setEmail('')
@@ -41,6 +43,11 @@ function SignIn() {
     }
   }
 
+  const userRegistrated = () => {
+    const text = 'Ya estas registrado'
+    wrong(text)
+  }
+
   useEffect(() => {
 
   }, [])
@@ -53,12 +60,12 @@ function SignIn() {
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl p-10 flex flex-col justify-evenly items-center w-1/2 mb-10">
         <h2 className="font-bold text-4xl ">Sign in!</h2>
         <form className="flex flex-col w-full " action="" onSubmit={handleSubmit}>
-          <label className="text-xl font-bold m-2 ml-5" htmlFor="username">Username</label>
+          <label className="text-xl font-bold m-2 ml-5" htmlFor="username">Email</label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full mb-5">
             <img className="h-8 m-3" src="src\assets\user.svg" alt="imagen usuario" />
             <input 
               className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray" 
-              type="text" 
+              type="email" 
               placeholder="" 
               name="username"  
               value={email} 
@@ -84,7 +91,7 @@ function SignIn() {
         <h2 className="font-bold text-4xl mb-10">Don't have an account yet?</h2>
         <h2 className="font-bold text-4xl mb-10">Sign up!</h2>
         <button className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold">
-          { user ? <Link to="/" >Let's go!</Link> : <Link to="/Sign-up" >Let's go!</Link>}
+          { user ? <Link to="/" onClick={userRegistrated}>Let's go!</Link> : <Link to="/Sign-up" >Let's go!</Link>}
         </button>
       </div>
     </div>
