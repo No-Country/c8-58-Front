@@ -29,6 +29,8 @@ function Publications() {
   const [t] = useTranslation('global')
   const { user } = UserAuth();
 
+  const { FiltroEvento, setFiltroEvento, FiltroLugar, setFiltroLugar } = useContext(GlobalContext)
+
   return (
     <>
       <div className="w-4/5 bg-lila s:w-full">
@@ -36,7 +38,7 @@ function Publications() {
           <h2 className="text-white text-2xl s:text-xl">{t("header.home")}</h2>
           <div className="flex flex-row text-white items-center justify-around">
             <p className="text-xl pr-5 s:text-lg">
-              <span>Evento</span> en <span>Lugar</span>
+              <span>{FiltroEvento}</span> en <span>{FiltroLugar}</span>
             </p>
             <button className="w-8" onClick={mostrarFiltros}>
               <img src="src\assets\filtroBlanco.png" alt="filtros" />

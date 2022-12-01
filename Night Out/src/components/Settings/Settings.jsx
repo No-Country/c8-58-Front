@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, NavLink, Link } from "react-router-dom";
 import Language from "../language/Language";
 import { UserAuth } from '../firebase/context/AuthContext'
+import DarkMode from '../DarkMode/DarkMode'
 
 function Settings() {
   const activeStyle = {
@@ -12,7 +13,7 @@ function Settings() {
   const { logOut, user } = UserAuth()
   return (
     <div className="flex lg:flex-row justify-between lg:items-start mt-10 w-full s:flex-col s:items-center 2xl:w-1/2">
-      <div className="flex flex-col s:items-center s:w-full">
+      <div className="flex flex-col s:items-center s:w-full lg:w-1/2">
         <Link
           to="/Feed"
           className=" justify-start bg-gradiante2 rounded-full lg:mr-10 lg:mb-10 hover:bg-gradiante3 s:mr-0 s:mb-3 s:px-5 s:w-3/4 md:w-1/2 lg:w-3/4"
@@ -67,7 +68,7 @@ function Settings() {
                 <span className="bg-gray h-0.1 w-full block"></span>
                 <div className="flex flex-col items-start mt-3 mb-3 w-full">
                   <label htmlFor="descripcion" className="mr-3">
-                    Descripcion:
+                    Descrition:
                   </label>
                   <textarea
                     name="descripcion"
@@ -121,34 +122,13 @@ function Settings() {
                 className="flex flex-col justify-evenly items-start m-5"
                 autoComplete="off"
               >
-                <div className="w-full flex flex-row items-center mt-3 mb-3 ">
-                  <label htmlFor="darkMode" className="mr-3">
-                    Dark/Light mode:
-                  </label>
-                  <select
-                    name="darkMode"
-                    id="darkMode"
-                    className="text-black bg-gray p-2 pr-4 pl-4 outline-none border-none rounded-full appearance-none hover:cursor-pointer"
-                  >
-                    <option value="dark" selected>
-                      Dark
-                    </option>
-                    <option value="light">Light</option>
-                  </select>
+                <div className="w-full flex flex-row items-center mt-3 mb-3 py-6">
+                  <DarkMode />
                 </div>
                 <span className="bg-gray h-0.1 w-full block"></span>
-                <div className="w-full flex flex-row items-center mt-3 mb-3 ">
-                  <label htmlFor="idioma" className="mr-3">
-                    {" "}
-                    Change language:
-                  </label>
+                <div className="w-full flex flex-row items-center mt-3 mb-3 py-6">
                   <Language />
                 </div>
-                <input
-                  type="submit"
-                  value="Confirm"
-                  className="mt-3 mb-3 bg-gray text-black rounded-full p-5 font-semibold hover:bg-white hover:cursor-pointer pl-10 pr-10 text-center self-center"
-                />
               </form>
             </div>
           }
