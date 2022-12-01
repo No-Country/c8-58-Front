@@ -3,17 +3,17 @@ import React from "react";
 function Postear() {
   return (
     <div>
-      <div className=" p-5 mb-3">
-        <div className="flex flex-row justify-evenly mb-5">
+      <div className=" p-5 mb-3 s:px-3 md:px-5">
+        <div className="flex flex-row justify-evenly mb-5 items-center">
           <div>
             <img
               src="src\assets\candado.svg"
               alt="foto perfil"
               className="w-16 rounded-full"
             />
-            <p className="text-white">Nombre</p>
+            <p className="text-white ">Nombre</p>
           </div>
-          <div className="bg-gray rounded-3xl w-3/4 p-5 flex flex-row items-center text-xl">
+          <div className="bg-gray rounded-3xl w-3/4 p-5 flex lg:flex-row items-center text-xl s:flex-col">
             <select className="w-full bg-gray outline-none text-center border-none appearance-none font-semibold">
               <option value="" selected="true" disabled="disabled">
                 {" "}
@@ -46,9 +46,9 @@ function Postear() {
             rows="10"
             placeholder="Descripción"
             maxLength="100"
-            className="w-full rounded-3xl p-5 bg-gray text-black max-h-16 resize-none outline-none"
+            className="w-full rounded-3xl p-5 bg-gray text-black 2xl:max-h-16 resize-none outline-none s:max-h-28"
           ></textarea>
-          <button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 top-1/2 -right-3 hover:animate-bounce">
+          <button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 2xl:top-1/2 -right-3 hover:animate-bounce s:top-3/4">
             <img src="src\assets\flechaBlanca.png" alt="Subir" />
           </button>
         </div>

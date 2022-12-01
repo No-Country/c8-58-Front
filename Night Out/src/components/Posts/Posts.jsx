@@ -4,8 +4,8 @@ import styles from './Posts.module.css';
 function Posts({ id, name, image, event, text, location }) {
 	return (
 		<>
-			<div className="pt-16 text-black">
-				<div className="flex flex-row justify-evenly items-center">
+			<div className="pt-16 text-black flex s:flex-col items-center">
+				<div className="flex flex-row justify-evenly items-center w-full">
 					<div className="flex flex-col items-center justify-evenly">
 						<img
 							className="w-16 rounded-full"
@@ -14,15 +14,16 @@ function Posts({ id, name, image, event, text, location }) {
 						/>
 						<p className="text-white">@Moderador</p>
 					</div>
-					<p className="w-3/4 p-5 bg-gray rounded-3xl text-center text-3xl flex flex-wor justify-evenly">
-						<span className="font-bold">{event}</span>
-						<span className="font-bold">{name}</span>
+					<p className="lg:w-3/4 p-5 bg-gray rounded-3xl text-center text-3xl flex lg:flex-row justify-evenly items-center s:text-lg s:flex-col s:w-1/2">
+						<span className="font-bold">Boliche{event}</span>
+						<span className='s:text-base'>en</span>
+						<span className="font-bold">Palermo{name}</span>
 					</p>
 				</div>
 
-				<div className="relative m-5">
-					<p className=" rounded-3xl  p-5  bg-gray text-black ">{text}</p>
-					<button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 top-1/2 right-2">
+				<div className="relative m-5 lg:w-11/12">
+					<p className=" rounded-3xl  p-5  bg-gray text-black ">Me gustaria ir a un boliche en palermo a conocer gente nueva{text}</p>
+					<button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 lg:top-1/2 right-2 s:top-3/4 s:-right-4">
 						<img
 							className=""
 							src="src\assets\comentariosBlanco.png"

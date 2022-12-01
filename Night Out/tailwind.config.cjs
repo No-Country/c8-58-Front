@@ -26,7 +26,11 @@ module.exports = {
       "lineaNavbar": "#011631",
     },
     screens: {
-      'sm': '640px',
+      "s":"320px",
+      "m":"375px",
+      "l":"425px",
+
+      'sm': {'max': '640px'},
       // => @media (min-width: 640px) { ... }
 
       'md': '768px',
@@ -35,10 +39,10 @@ module.exports = {
       'lg': '1024px',
       // => @media (min-width: 1024px) { ... }
 
-      'xl': '1280px',
+      'xl': '1440px',
       // => @media (min-width: 1280px) { ... }
 
-      '2xl': '1536px',
+      '2xl': '2560px',
       // => @media (min-width: 1536px) { ... }
     },
   },

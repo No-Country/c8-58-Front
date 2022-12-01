@@ -18,11 +18,11 @@ function Filters() {
 
 
   return (
-    <div className={FiltrosMostrado === false ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10" : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10"}>
+    <div className={FiltrosMostrado === false ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10 s:w-full" : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10 s:w-full"}>
       <div className="flex flex-row items-center justify-between w-full">
-        <h2 className="text-2xl text-white">Filters</h2>
+        <h2 className="text-2xl text-white s:text-xl">Filters</h2>
         <div className="flex flex-row text-white items-center justify-around">
-          <p className="text-xl pr-5">
+          <p className="text-xl pr-5 s:text-lg">
             <span>Evento</span> en <span>Lugar</span>
           </p>
           <button className="w-8" onClick={mostrarFiltros}>
@@ -31,7 +31,7 @@ function Filters() {
         </div>
       </div>
       <div className="flex flex-row items-center w-full justify-evenly pt-5 text-white bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3">
-        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante1 to-gradiante2">
+        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante1 to-gradiante2 appearance-none">
           <option
             className="text-black"
             value=""
@@ -54,7 +54,7 @@ function Filters() {
             Otro
           </option>
         </select>
-        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante2 to-gradiante3">
+        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante2 to-gradiante3 appearance-none">
           <option
             className="text-black"
             value=""
@@ -81,7 +81,7 @@ function Filters() {
           </option>
         </select>
       </div>
-      <button className="bg-gray p-3 text-2xl rounded-full mt-5 w-2/6 hover:bg-white" onClick={mostrarFiltros}>
+      <button className="bg-gray p-3 text-2xl rounded-full mt-5 w-2/6 hover:bg-white s:w-1/2" onClick={mostrarFiltros}>
         Search
       </button>
     </div>

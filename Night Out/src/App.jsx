@@ -26,7 +26,7 @@ function App() {
 							path="/"
 							element={
 								<>
-									<main className="w-10/12 flex flex-col items-center mx-auto ">
+									<main className="md:w-10/12 flex flex-col items-center mx-auto s:w-full">
 										<Introduction />
 										<HowItWorks />
 										<SignIn />
@@ -39,7 +39,7 @@ function App() {
 							path="/Sign-up"
 							element={
 								<>
-									<main className="w-10/12 flex flex-col items-center mx-auto ">
+									<main className="md:w-10/12 flex flex-col items-center mx-auto s:w-full">
 										<SignUp />
 									</main>
 									<Footer />
@@ -50,8 +50,8 @@ function App() {
 							path="/Sign-In"
 							element={
 								<>
-									<main className="w-10/12 flex flex-col items-center mx-auto ">
-										<LogIn />
+									<main className="md:w-10/12 flex flex-col items-center mx-auto s:w-full">
+										<SignIn />
 									</main>
 									<Footer />
 								</>
@@ -60,7 +60,7 @@ function App() {
 						<Route
 							path="/Feed"
 							element={
-								<main className="w-3/5 flex flex-col items-center mx-auto relative overflow-hidden">
+								<main className="md:w-3/5 flex flex-col items-center mx-auto relative overflow-hidden s:w-full xl:w-1/2 2xl:w-1/3">
 									<Publications />
 									<Filters />
 									<Navbar />
@@ -70,17 +70,17 @@ function App() {
 						<Route
 							path="/User"
 							element={
-								<main className="w-3/5 flex flex-col items-center mx-auto relative overflow-hidden">
+								<main className="md:w-3/5 flex flex-col items-center mx-auto relative overflow-hidden s:w-full xl:w-1/2 2xl:w-1/3">
 									<User />
 									<Navbar />
 								</main>
 							}
 						></Route>
 						<Route
-							path="/Settings/*"
+							path="/*"
 							element={
 								<>
-								<main className="w-3/5 flex flex-col items-center mx-auto relative overflow-hidden">
+								<main className="md:w-3/5 flex flex-col items-center mx-auto relative overflow-hidden s:w-full">
 									<Settings />
 									<Navbar />
 								</main>
