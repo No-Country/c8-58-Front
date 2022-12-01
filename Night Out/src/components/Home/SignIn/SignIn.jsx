@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux"
 
 import { getUserDetail } from "../../../redux/actions";
 
-import { UserAuth } from '../../firebase/context/AuthContext'
-import { Alerts } from '../../alerts/Alerts'
+import { UserAuth } from "../../firebase/context/AuthContext";
+import { Alerts } from "../../alerts/Alerts";
 
 function validate(userSI) {
   let error = {}
@@ -18,8 +18,8 @@ function validate(userSI) {
 }
 
 function SignIn() {
-  const { signInEmailPassword, user } = UserAuth()
-  const { correct, wrong } = Alerts()
+  const { signInEmailPassword, user } = UserAuth();
+  const { correct, wrong } = Alerts();
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -63,9 +63,9 @@ function SignIn() {
         const text = error.code
         wrong(text)
       }
-      if(error.code === 'auth/user-not-found'){
-        const text = error.code
-        wrong(text)
+      if (error.code === "auth/user-not-found") {
+        const text = error.code;
+        wrong(text);
       }
     }
   }
@@ -84,48 +84,82 @@ function SignIn() {
     wrong(text)
   }
 
-  useEffect(() => {
-
-  }, [])
+  useEffect(() => {}, []);
 
   return (
-    <div className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 " id="logear">
-      <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl m-10 text-center">
+    <div
+      className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 "
+      id="logear"
+    >
+      <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 md:text-3xl s:px-10 s:text-center s:mb-5 s:mt-5 s:text-2xl">
         What now?
       </h2>
-      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl p-10 flex flex-col justify-evenly items-center w-1/2 mb-10">
-        <h2 className="font-bold text-4xl ">Sign in!</h2>
-        <form className="flex flex-col w-full " action="" onSubmit={handleSubmit}>
-          <label className="text-xl font-bold m-2 ml-5" htmlFor="username">Email</label>
+      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl lg:p-10 flex flex-col justify-evenly items-center lg:w-3/4 mb-10 s:w-full s:p-5 xl:w-1/2 2xl:w-1/3">
+        <h2 className="font-bold text-4xl s:text-2xl md:text-3xl">Sign in!</h2>
+        <form
+          className="flex flex-col w-full "
+          action=""
+          onSubmit={handleSubmit}
+          autoComplete="on"
+        >
+          <label
+            className="md:text-xl font-bold m-2 ml-5 s:text-lg"
+            htmlFor="username"
+          >
+            Email
+          </label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full mb-5">
-            <img className="h-8 m-3" src="src\assets\user.svg" alt="imagen usuario" />
-            <input 
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray" 
-              type="email" 
-              placeholder="" 
+            <img
+              className="h-8 m-3"
+              src="src\assets\user.svg"
+              alt="imagen usuario"
+            />
+            <input
+              className="colorNegro w-full rounded-r-full outline-none md:text-xl bg-gray s:text-lg"
+              type="email"
+              placeholder=""
               name="email"  
               onChange={(e) => handleChange(e)}
             />
           </div>
-          <label className="text-xl font-bold m-2 ml-5" htmlFor="password">Password</label>
+          <label
+            className="md:text-xl font-bold m-2 ml-5 s:text-lg"
+            htmlFor="password"
+          >
+            Password
+          </label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full  mb-5">
-          <img className="h-8 m-3" src="src\assets\candado.svg" alt="imagen contraseña" />
-          <input 
-            className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray" 
-            type="password" 
-            placeholder=""
-            name="password" 
-            onChange={(e) => handleChange(e)}
-          />
+            <img
+              className="h-8 m-3"
+              src="src\assets\candado.svg"
+              alt="imagen contraseña"
+            />
+            <input
+              className="colorNegro w-full rounded-r-full outline-none md:text-xl bg-gray s:text-lg"
+              type="password"
+              placeholder=""
+              name="password" 
+              onChange={(e) => handleChange(e)}
+            />
           </div>
-          <button className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold">Sign in</button>
+          <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold hover:bg-white s:text-lg">
+            Sign in
+          </button>
         </form>
       </div>
-      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl flex flex-col justify-evenly items-center w-1/2 p-10 text-center">
-        <h2 className="font-bold text-4xl mb-10">Don't have an account yet?</h2>
-        <h2 className="font-bold text-4xl mb-10">Sign up!</h2>
-        <button className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold">
-          { user ? <Link to="/" onClick={userRegistrated}>Let's go!</Link> : <Link to="/Sign-up" >Let's go!</Link>}
+      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl flex flex-col justify-evenly items-center lg:w-3/4 p-10 text-center s:w-full s:p-5 xl:w-1/2 2xl:w-1/3">
+        <h2 className="font-bold text-4xl mb-10 s:text-2xl md:text-3xl">
+          Don't have an account yet?
+        </h2>
+        <h2 className="font-bold text-4xl mb-10 s:text-2xl md:text-3xl">
+          Sign up!
+        </h2>
+        <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold animate-pulse s:text-lg">
+          {user ? (
+            <Link to="/">Let's go!</Link>
+          ) : (
+            <Link to="/Sign-up">Let's go!</Link>
+          )}
         </button>
       </div>
     </div>

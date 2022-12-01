@@ -10,6 +10,7 @@ import Publications from './components/Publications/Publications';
 import Navbar from './components/Feed/Navbar';
 import Filters from './components/Feed/Filters';
 import User from './components/User/User';
+import Settings from './components/Settings/Settings'
 
 import { AlertsProvider } from './components/alerts/Alerts';
 import { AuthContextProvider } from './components/firebase/context/AuthContext'
@@ -25,7 +26,7 @@ function App() {
 							path="/"
 							element={
 								<>
-									<main className="w-10/12 flex flex-col items-center mx-auto ">
+									<main className="md:w-10/12 flex flex-col items-center mx-auto s:w-full">
 										<Introduction />
 										<HowItWorks />
 										<SignIn />
@@ -38,7 +39,7 @@ function App() {
 							path="/Sign-up"
 							element={
 								<>
-									<main className="w-10/12 flex flex-col items-center mx-auto ">
+									<main className="md:w-10/12 flex flex-col items-center mx-auto s:w-full">
 										<SignUp />
 									</main>
 									<Footer />
@@ -49,8 +50,8 @@ function App() {
 							path="/Sign-In"
 							element={
 								<>
-									<main className="w-10/12 flex flex-col items-center mx-auto ">
-										<LogIn />
+									<main className="md:w-10/12 flex flex-col items-center mx-auto s:w-full">
+										<SignIn />
 									</main>
 									<Footer />
 								</>
@@ -59,7 +60,7 @@ function App() {
 						<Route
 							path="/Feed"
 							element={
-								<main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
+								<main className="md:w-3/5 flex flex-col items-center mx-auto relative overflow-hidden s:w-full xl:w-1/2 2xl:w-1/3">
 									<Publications />
 									<Filters />
 									<Navbar />
@@ -69,10 +70,22 @@ function App() {
 						<Route
 							path="/User"
 							element={
-								<main className="w-4/5 flex flex-col items-center mx-auto relative overflow-hidden">
+								<main className="md:w-3/5 flex flex-col items-center mx-auto relative overflow-hidden s:w-full xl:w-1/2 2xl:w-1/3">
 									<User />
 									<Navbar />
 								</main>
+							}
+						></Route>
+						<Route
+							path="/*"
+							element={
+								<>
+								<main className="md:w-3/5 flex flex-col items-center mx-auto relative overflow-hidden s:w-full">
+									<Settings />
+									<Navbar />
+								</main>
+								<Footer />
+								</>
 							}
 						></Route>
 					</Routes>

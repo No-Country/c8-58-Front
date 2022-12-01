@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../../Context/GlobalContext";
+import { useTranslation } from 'react-i18next'
 
 function Filters() {
 
@@ -15,23 +16,23 @@ function Filters() {
 		  console.log("Mostrando Filtros")
 		}
 	  }
-
+  const [t] = useTranslation('global')
 
   return (
-    <div className={FiltrosMostrado === false ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10" : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10"}>
+    <div className={FiltrosMostrado === false ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10 s:w-full" : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10 s:w-full"}>
       <div className="flex flex-row items-center justify-between w-full">
-        <h2 className="text-4xl text-white">Filters</h2>
+        <h2 className="text-2xl text-white s:text-xl">{t("filters.Filters")}</h2>
         <div className="flex flex-row text-white items-center justify-around">
-          <p className="text-2xl pr-5">
+          <p className="text-xl pr-5 s:text-lg">
             <span>Evento</span> en <span>Lugar</span>
           </p>
-          <button className="w-10" onClick={mostrarFiltros}>
+          <button className="w-8" onClick={mostrarFiltros}>
             <img src="src\assets\filtroBlanco.png" alt="filtros" />
           </button>
         </div>
       </div>
       <div className="flex flex-row items-center w-full justify-evenly pt-5 text-white bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3">
-        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante1 to-gradiante2">
+        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante1 to-gradiante2 appearance-none">
           <option
             className="text-black"
             value=""
@@ -39,7 +40,7 @@ function Filters() {
             disabled="disabled"
           >
             {" "}
-            Evento
+            {t("filters.Event")}
           </option>
           <option className="text-black" value="bar">
             Bar
@@ -51,10 +52,10 @@ function Filters() {
             Concierto
           </option>
           <option className="text-black" value="otroEvento">
-            Otro
+          {t("filters.Others")}
           </option>
         </select>
-        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante2 to-gradiante3">
+        <select className="w-full text-center text-xl bg-gradient-to-r from-gradiante2 to-gradiante3 appearance-none">
           <option
             className="text-black"
             value=""
@@ -77,12 +78,12 @@ function Filters() {
             Tigre
           </option>
           <option className="text-black" value="otroLugar">
-            Otro
+          {t("filters.Others")}
           </option>
         </select>
       </div>
-      <button className="bg-gray p-3 text-2xl rounded-full mt-5 w-2/6 hover:bg-white">
-        Search
+      <button className="bg-gray p-3 text-2xl rounded-full mt-5 w-2/6 hover:bg-white s:w-1/2" onClick={mostrarFiltros}>
+      {t("filters.Search")}
       </button>
     </div>
   );

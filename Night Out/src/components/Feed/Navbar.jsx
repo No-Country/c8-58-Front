@@ -28,18 +28,16 @@ function Navbar() {
       <div>
         
       <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Settings</h2>
+      <Link to="/Settings-User"><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">Settings</h2></Link>
       <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Direct Messages</h2>
+      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">Direct Messages</h2>
       <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Help</h2>
-      <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2">Log Out</h2>
+      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">Log Out</h2>
       <span className="bg-lineaNavbar h-1 w-full block"></span>
       </div>
       </div>
       <div>
-        <span className="bg-white h-1 w-4/5 block mx-auto"></span>
+        <span className="bg-white h-0.1 w-4/5 block mx-auto"></span>
         <div className="flex flex-col items-center justify-center mt-8 mb-8">
           <div className="flex flex-row items-center justify-center">
             <img className="w-14 mr-3" src="src\assets\logo.png" alt="logo" />
