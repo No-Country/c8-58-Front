@@ -59,7 +59,6 @@ useEffect(() => {
     }
   }
 
-
   return (
     <header className={ NavbarMostrado === false ? "text-white flex flex-row items-center justify-around bg-gradiante1 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0" : "text-white flex flex-row items-center justify-around  bg-gradiante1 sticky top-0 z-10 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0" }>
       <div className="flex flex-row  items-center">

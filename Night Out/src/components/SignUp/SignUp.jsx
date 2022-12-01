@@ -11,22 +11,22 @@ import { Alerts } from '../alerts/Alerts'
 function validate(user) {
   let error = {}
   
-    // if(user.username && user.username.length < 8) error.username = 'El nombre debe contener al menos 8 caracteres'
+    if(user.name && user.name.length < 8) error.name = 'El nombre debe contener al menos 8 caracteres'
+    if(!/^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/.test(user.name)) error.name1 = 'El nombre debe contener solo letras'
 
-    // if(user.pass1 && user.pass1.length < 6) error.pass1 = 'La contraseña debe contener al menos 6 caracteres'
+    if(user.dni){
+      const dniString = user.dni.toString()
+      if(dniString.length !== 8) error.dni = 'Ingrese un dni valido'
+    }
 
-    // if(user.pass2 && user.pass2.length < 6) error.pass2 = 'La contraseña debe contener al menos 6 caracteres'
+    if(user.cel[0] === '+'){
+      if(isNaN(user.cel.substring(1, user.cel.length - 1)))
+      error.cel = 'algodelcel'
+    } else if(isNaN(user.cel)){
+      error.cel1 = 'algodelcel'
+    }
 
-    //if((pass2 && pass2 !== pass1)) error.pass = 'No coinciden las contraseñas'
-
-    // if(user.DNI){
-    //   const dniString = user.DNI.toString()
-    //   if(dniString.length !== 8) error.DNI = 'Ingrese un DNI valido'
-    // }
-
-    // if(user.telefono && user.telefono.length < 10) error.telefono = 'El telefono debe contener al menos 8 caracteres'
-
-  //return error
+  return error
 }
 
 function SignUp() {
@@ -36,164 +36,111 @@ function SignUp() {
   const dispatch = useDispatch()
   const [user, setUser] = useState({
     name:"",
-    password:"",
+    pass1:"",
+    pass2:"",
     dni:"",
     years:"",
     email:"",
     cel:"",
     image:""
   })
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [pass1, setPass1] = useState("")
-  const [pass2, setPass2] = useState("")
-  const [dni, setDni] = useState("")
-  const [telefono, setTelefono] = useState("")
-  const [cumple, setCumple] = useState("")
 
   const [error, setError] = useState("")
+  const [check, setCheck] = useState(false)
 
   const navigate = useNavigate()
 
-  const handleChangeUsername = (e) => {
-    setUsername(e.target.value)
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name] : e.target.value})
     setError(validate({
       ...user,
-      username: e.target.value
+      [e.target.name]: e.target.value,
     }))
   }
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value)
-    setError(validate({
-      ...user,
-      mail: e.target.value
-    }))
-  }
-
-  const handleChangePass1 = (e) => {
-    setPass1(e.target.value)
-    setError(validate({
-      ...user,
-      pass1: e.target.value
-    }))
-    console.log(pass1)
-  }
-
-  const handleChangePass2 = (e) => {
-    setPass2(e.target.value)
-    setError(validate({
-      ...user,
-      pass2: e.target.value
-    }))
-    console.log(pass2)
-  }
-
-  const handleChangeDni = (e) => {
-    setDni(e.target.value)
-    setError(validate({
-      ...user,
-      DNI: e.target.value
-    }))
-  }
-
-  const handleChangeTelefono = (e) => {
-    setTelefono(e.target.value)
-    setError(validate({
-      ...user,
-      telefono: e.target.value
-    }))
-  }
-
-  const handleChangeCumple = (e) => {
-    setCumple(e.target.value)
-    setError(validate({
-      ...user,
-      cumple: e.target.value
-    }))
-  }
+  const handleChangeCheck = (e) => { 
+    if(e.target.checked === true){
+      setCheck(true)
+    } else {
+      setCheck(false)
+    }
+    }
   
   const handleSubmit = async(e) => {
     e.preventDefault()
-    if(pass1 === pass2){
-      //Sino, sacar lo de validate y hcaer los ifs aca y que el ultimo sea el del posr user
-      if(!error){
-        try {
-          const password = pass1
-          console.log(password)
-          const userData = await createUserEmailPassword(email, password)
-          if(userData !== undefined) {
-            await dispatch(postUser({
-              id: userData.user.uid,
-              name: username,
-              password: password,
-              email: email,
-              cel: telefono,
-              years: cumple,
-              dni: dni,
-              image: ""
-            }))
-            localStorage.setItem('id', userData.user.uid)
-            localStorage.setItem('email', email)
-            correct('Registrado')
-            await dispatch(getUserDetail(userData.user.uid))
+    console.log(user)
+    if(user.pass1 === user.pass2){
+      if(check === true){
+        if(Object.entries(error).length === 0){
+          try {
+            const password = user.pass1
+            const email = user.email
+            const userData = await createUserEmailPassword(email, password)
+            if(userData !== undefined) {
+              await dispatch(postUser({
+                id: userData.user.uid,
+                name: user.name,
+                password: password,
+                email: email,
+                cel: user.cel,
+                years: user.years,
+                dni: user.dni,
+                image: ""
+              }))
+              localStorage.setItem('id', userData.user.uid)
+              localStorage.setItem('email', email)
+              correct('Registrado')
+              await dispatch(getUserDetail(userData.user.uid))
+            }
+            navigate('/feed')
+          } catch(error) {
+            console.log(error.code)
+            if(error.code === 'auth/missing-email'){
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/invalid-email'){
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/email-already-in-use'){
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/internal-error'){//cuando pondo email y no contraseña
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/weak-password'){
+              const text = error.code 
+              wrong(text)
+            }
           }
-          navigate('/')
-        } catch(error) {
-          console.log(error.code)
-          if(error.code === 'auth/missing-email'){
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/invalid-email'){
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/email-already-in-use'){
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/internal-error'){//cuando pondo email y no contraseña
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/weak-password'){
-            const text = error.code 
-            wrong(text)
-          }
+        } 
+        else if(error.name){
+          const text = 'name debe ser de la menos 8 caracteres'
+          wrong(text)
         }
-      } 
-      else if(error.username){
-        const text = 'username'
-        wrong(text)
-      }
-      else if(error.mail){
-        const text = error.code 
-        wrong(text)
-      }
-      else if(error.pass1){
-        const text = `{user.pass1}`  
-        wrong(text)
-      }
-      else if(error.pass2){
-        const text = `{user.pass2}` 
-        wrong(text)
-      }
-      // else if(error.pass){
-      //   const text = `${pass2} ${pass1}`  
-      //   wrong(text)
-      // }
-      else if(error.DNI){
-        const text = error.code 
-        wrong(text)
-      }
-      else if(error.telefono){
-        const text = error.code 
-        wrong(text)
-      }
-      else if(error.cumple){
-        const text = error.code 
-        wrong(text)
+        else if(error.name1){
+          const text = 'El nombre debe contener solo letras'
+          wrong(text)
+        }
+        else if(error.dni){
+          const text = 'Ingrese dni valido' 
+          wrong(text)
+        }
+        else if(error.cel){
+          const text = 'error.cel.solonumeros+' 
+          wrong(text)
+        }
+        else if(error.cel1){
+          const text = 'error.cel.solonumeros' 
+          wrong(text)
+        }
+      } else {
+        wrong('checkea')
       }
     } else {
       wrong('las contraseñas no coinciden')      
@@ -201,6 +148,12 @@ function SignUp() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>
+        Night Out - Sign Up
+      </title>
+    </Helmet>
     <div className="flex flex-col items-center justify-evenly m-20 w-full">
       <h2 
         className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl text-white mb-16 md:text-3xl s:px-10 s:text-center s:mb-5 s:mt-5 s:text-2xl"
@@ -217,9 +170,11 @@ function SignUp() {
               alt="imagen usuario"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray s:text-lg"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
+              name="name"
               type="text"
               placeholder="User"
+              onChange={(e) => {handleChange(e)}}
               required
             />
           </div>
@@ -230,12 +185,12 @@ function SignUp() {
               alt="imagen mail"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray s:text-lg"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="email"
-              name="mail"
+              name="email"
               //id="mail"
               placeholder="Mail"
-              onChange={(e) => {setEmail(e.target.value)}}
+              onChange={(e) => {handleChange(e)}}
               required
             />
           </div>
@@ -245,13 +200,13 @@ function SignUp() {
               src="src\assets\candado.svg"
               alt="imagen contraseña"
             />
-            <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray s:text-lg"
+              <input
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="password"
               name="pass1"
-              id="pass1"
+              //id="pass1"
               placeholder="Password"
-              onChange={(e) => {setPassword(e.target.value)}}
+              onChange={(e) => {handleChange(e)}}
               required
             />
           </div>
@@ -262,11 +217,12 @@ function SignUp() {
               alt="imagen contraseña"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray s:text-lg"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="password"
               name="pass2"
-              id="pass2"
+              //id="pass2"
               placeholder="Confirm Password"
+              onChange={(e) => {handleChange(e)}}
               required
             />
           </div>
@@ -277,11 +233,12 @@ function SignUp() {
               alt="imagen dni"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-5 s:text-lg"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="number"
-              name="DNI"
-              id="dni"
-              placeholder="XXXXXXXX"
+              name="dni"
+              //id="dni"
+              placeholder="XX.XXX.XXX"
+              onChange={(e) => {handleChange(e)}}
               required
             />
           </div>
@@ -292,11 +249,14 @@ function SignUp() {
               alt="imagen telefono"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray s:text-lg"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="tel"
-              name="telefono"
-              id="telefono"
+              name="cel"
+              //id="telefono"
               placeholder="11 XXXX XXXX"
+              maxLength='13'
+              minLength='10'
+              onChange={(e) => {handleChange(e)}}
               required
             />
           </div>
@@ -307,15 +267,23 @@ function SignUp() {
               alt="imagen calendario"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-5 s:text-lg"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
               type="date"
-              name="cumple"
+              name="years"
               id="cumple"
+              onChange={(e) => {handleChange(e)}}
               required
             />
           </div>
           <div className="text-white text-xl flex md:flex-row items-center justify-center s:flex-col s:mb-5">
-            <input type="checkbox" name="TyC" id="tyc" required className="s:order-2 md:order-1"/>
+          <input 
+            type="checkbox" 
+            name="check" 
+            id="tyc"
+            value={check}
+            onChange={(e) => {handleChangeCheck(e)}}  
+            className="s:order-2 md:order-1"
+          />
             <label className="m-5 text-center s:order-1 md:order-2" htmlFor="tyc">
               Agree to Terms and Conditions
             </label>
@@ -329,6 +297,7 @@ function SignUp() {
         </form>
       </div>
       </div>
+      </>
   );
 }
 
