@@ -43,7 +43,7 @@ function Publications() {
             </button>
           </div>
         </div>
-        {!user ? <Postear /> : ""}
+        {user ? <Postear /> : ""}
 
         {!allPublications.length ? (
             <h1>{t("publications.Loading")}</h1>
