@@ -51,7 +51,7 @@ function LogIn() {
       await dispatch(getUserDetail(userSignIn.user.uid))
       localStorage.setItem('id', userSignIn.user.uid)
       localStorage.setItem('email', email)
-      navigate('/feed')
+      navigate('/Feed')
     } catch (error) {
       if(error.code === 'auth/wrong-password'){
         const text = error.code
@@ -87,7 +87,7 @@ function LogIn() {
         Sign In
       </h2>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl p-10 flex flex-col justify-evenly items-center w-1/2 mb-10">
-        <form className="flex flex-col w-full " action="">
+        <form className="flex flex-col w-full " onSubmit={handleSubmit} action="">
           <label className="text-xl font-bold m-2 ml-5" htmlFor="username">
             Email
           </label>

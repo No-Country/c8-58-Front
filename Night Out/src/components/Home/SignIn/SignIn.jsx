@@ -57,7 +57,7 @@ function SignIn() {
         email:"",
         password:""
       })
-      navigate('/feed')
+      navigate('/Feed')
     } catch (error) {
       if(error.code === 'auth/wrong-password'){
         const text = error.code
