@@ -1,45 +1,88 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"
+
+import { getUserDetail } from "../../../redux/actions";
 
 import { UserAuth } from "../../firebase/context/AuthContext";
 import { Alerts } from "../../alerts/Alerts";
+
+function validate(userSI) {
+  let error = {}
+  
+    if(!userSI.email) error.email = 'Ingrese un email'
+
+    if(!userSI.password) error.password = 'Ingrese una contraseña'
+
+  return error
+}
 
 function SignIn() {
   const { signInEmailPassword, user } = UserAuth();
   const { correct, wrong } = Alerts();
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [userSI, setUserSI] = useState({
+    email:"",
+    password:""
+  })
+  const [error, setError] = useState('')
+
+  const handleChange = (e) => {
+    setUserSI({
+      ...userSI,
+      [e.target.name] : e.target.value})
+    setError(validate({
+      ...userSI,
+      [e.target.name]: e.target.value
+    }))
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+    e.preventDefault()
+    if(Object.entries(error).length === 0){
     try {
-      console.log(email);
-      console.log(password);
-      const userSignIn = await signInEmailPassword(email, password);
-      console.log(userSignIn);
-      await correct("Sesion Iniciada");
-      localStorage.setItem("id", userSignIn.user.uid);
-      localStorage.setItem("email", email);
-      setEmail("");
-      setPassword("");
-      navigate("/");
+      const email = userSI.email
+      const password = userSI.password
+      console.log(email)
+      console.log(password)
+      const userSignIn = await signInEmailPassword(email, password)
+      await correct('Sesion Iniciada')
+      await dispatch(getUserDetail(userSignIn.user.uid))
+      localStorage.setItem('id', userSignIn.user.uid)
+      localStorage.setItem('email', email)
+      setUserSI({
+        email:"",
+        password:""
+      })
+      navigate('/feed')
     } catch (error) {
-      setError(error.code);
-      if (error.code === "auth/wrong-password") {
-        const text = error.code;
-        wrong(text);
+      if(error.code === 'auth/wrong-password'){
+        const text = error.code
+        wrong(text)
       }
       if (error.code === "auth/user-not-found") {
         const text = error.code;
         wrong(text);
       }
     }
-  };
+  }
+  else if(error.email){
+    const text = `${error.email}`
+    wrong(text)
+  }
+  else if(error.password){
+    const text = `${error.password}`
+    wrong(text)
+  }
+}
+
+  const userRegistrated = () => {
+    const text = 'Ya estas registrado'
+    wrong(text)
+  }
 
   useEffect(() => {}, []);
 
@@ -63,7 +106,7 @@ function SignIn() {
             className="md:text-xl font-bold m-2 ml-5 s:text-lg"
             htmlFor="username"
           >
-            Username
+            Email
           </label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full mb-5">
             <img
@@ -73,11 +116,10 @@ function SignIn() {
             />
             <input
               className="colorNegro w-full rounded-r-full outline-none md:text-xl bg-gray s:text-lg"
-              type="text"
+              type="email"
               placeholder=""
-              name="username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"  
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <label
@@ -96,9 +138,8 @@ function SignIn() {
               className="colorNegro w-full rounded-r-full outline-none md:text-xl bg-gray s:text-lg"
               type="password"
               placeholder=""
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password" 
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold hover:bg-white s:text-lg">
