@@ -7,7 +7,11 @@
     "change": "Cambiar Idioma"
   },
   "filters":{
-
+    "Filters" : "Filtros",
+    "Event" : "Evento",
+    "Place" : "Lugar",
+    "Search" : "Buscar",
+    "Others" : "Otro"
   },
   "navbar":{
     

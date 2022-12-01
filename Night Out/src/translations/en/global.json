@@ -1,27 +1,31 @@
 {
   "alerts":{
-    "correct": "Correct",
-    "incorrect": "Incorrect"
+    "correct" : "Correct",
+    "incorrect" : "Incorrect"
   },
   "language":{
-    "change": "Change Language"
+    "change" : "Change Language"
   },
   "filters":{
-
+    "Filters" : "Filters",
+    "Event" : "Event",
+    "Place" : "Place",
+    "Search" : "Search",
+    "Others" : "Others"
   },
   "navbar":{
     
   },
   "Post":{
-    "name": "Name: ",
-    "password": "Password: "
+    "name" : "Name: ",
+    "password" : "Password: "
   },
-  "publications":{
+  "publications" :{
     
   },
   "home":{
-    "title": "Night Out",
-    "test": "test"
+    "title" : "Night Out",
+    "test" : "test"
   },
   "hiw":{
 
@@ -48,9 +52,9 @@
 
   },
   "header":{
-    "home": "Home",
-    "signin": "Sign In",
-    "correct": "Correct",
-    "incorrect": "Incorrect"
+    "home" : "Home",
+    "signin" : "Sign In",
+    "correct" : "Correct",
+    "incorrect" : "Incorrect"
   }
 }
