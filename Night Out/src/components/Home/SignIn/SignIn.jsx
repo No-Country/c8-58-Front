@@ -7,6 +7,16 @@ import { getUserDetail } from "../../../redux/actions";
 import { UserAuth } from '../../firebase/context/AuthContext'
 import { Alerts } from '../../alerts/Alerts'
 
+function validate(userSI) {
+  let error = {}
+  
+    if(!userSI.email) error.email = 'Ingrese un email'
+
+    if(!userSI.password) error.password = 'Ingrese una contraseña'
+
+  return error
+}
+
 function SignIn() {
   const { signInEmailPassword, user } = UserAuth()
   const { correct, wrong } = Alerts()
@@ -14,24 +24,41 @@ function SignIn() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [userSI, setUserSI] = useState({
+    email:"",
+    password:""
+  })
   const [error, setError] = useState('')
+
+  const handleChange = (e) => {
+    setUserSI({
+      ...userSI,
+      [e.target.name] : e.target.value})
+    setError(validate({
+      ...userSI,
+      [e.target.name]: e.target.value
+    }))
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError('')
+    if(Object.entries(error).length === 0){
     try {
+      const email = userSI.email
+      const password = userSI.password
+      console.log(email)
+      console.log(password)
       const userSignIn = await signInEmailPassword(email, password)
       await correct('Sesion Iniciada')
       await dispatch(getUserDetail(userSignIn.user.uid))
       localStorage.setItem('id', userSignIn.user.uid)
       localStorage.setItem('email', email)
-      setEmail('')
-      setPassword('')
-      navigate('/')
+      setUserSI({
+        email:"",
+        password:""
+      })
+      navigate('/feed')
     } catch (error) {
-      setError(error.code)
       if(error.code === 'auth/wrong-password'){
         const text = error.code
         wrong(text)
@@ -42,6 +69,15 @@ function SignIn() {
       }
     }
   }
+  else if(error.email){
+    const text = `${error.email}`
+    wrong(text)
+  }
+  else if(error.password){
+    const text = `${error.password}`
+    wrong(text)
+  }
+}
 
   const userRegistrated = () => {
     const text = 'Ya estas registrado'
@@ -67,9 +103,8 @@ function SignIn() {
               className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray" 
               type="email" 
               placeholder="" 
-              name="username"  
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"  
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <label className="text-xl font-bold m-2 ml-5" htmlFor="password">Password</label>
@@ -78,10 +113,9 @@ function SignIn() {
           <input 
             className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray" 
             type="password" 
-            placeholder="" 
+            placeholder=""
             name="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => handleChange(e)}
           />
           </div>
           <button className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold">Sign in</button>

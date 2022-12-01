@@ -46,91 +46,101 @@ function SignUp() {
   })
 
   const [error, setError] = useState("")
+  const [check, setCheck] = useState(false)
 
   const navigate = useNavigate()
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     setUser({
       ...user,
       [e.target.name] : e.target.value})
     setError(validate({
       ...user,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }))
   }
+
+  const handleChangeCheck = (e) => { 
+    if(e.target.checked === true){
+      setCheck(true)
+    } else {
+      setCheck(false)
+    }
+    }
   
   const handleSubmit = async(e) => {
-    console.log(user.cel)
-    console.log(user.cel[0])
     e.preventDefault()
     console.log(user)
     if(user.pass1 === user.pass2){
-      if(Object.entries(error).length === 0){
-        try {
-          const password = user.pass1
-          const email = user.email
-          console.log(password)
-          const userData = await createUserEmailPassword(email, password)
-          if(userData !== undefined) {
-            await dispatch(postUser({
-              id: userData.user.uid,
-              name: user.name,
-              password: password,
-              email: email,
-              cel: user.cel,
-              years: user.years,
-              dni: user.dni,
-              image: ""
-            }))
-            localStorage.setItem('id', userData.user.uid)
-            localStorage.setItem('email', email)
-            correct('Registrado')
-            await dispatch(getUserDetail(userData.user.uid))
+      if(check === true){
+        if(Object.entries(error).length === 0){
+          try {
+            const password = user.pass1
+            const email = user.email
+            const userData = await createUserEmailPassword(email, password)
+            if(userData !== undefined) {
+              await dispatch(postUser({
+                id: userData.user.uid,
+                name: user.name,
+                password: password,
+                email: email,
+                cel: user.cel,
+                years: user.years,
+                dni: user.dni,
+                image: ""
+              }))
+              localStorage.setItem('id', userData.user.uid)
+              localStorage.setItem('email', email)
+              correct('Registrado')
+              await dispatch(getUserDetail(userData.user.uid))
+            }
+            navigate('/feed')
+          } catch(error) {
+            console.log(error.code)
+            if(error.code === 'auth/missing-email'){
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/invalid-email'){
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/email-already-in-use'){
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/internal-error'){//cuando pondo email y no contraseña
+              const text = error.code 
+              wrong(text)
+            }
+            if(error.code === 'auth/weak-password'){
+              const text = error.code 
+              wrong(text)
+            }
           }
-          navigate('/')
-        } catch(error) {
-          console.log(error.code)
-          if(error.code === 'auth/missing-email'){
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/invalid-email'){
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/email-already-in-use'){
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/internal-error'){//cuando pondo email y no contraseña
-            const text = error.code 
-            wrong(text)
-          }
-          if(error.code === 'auth/weak-password'){
-            const text = error.code 
-            wrong(text)
-          }
+        } 
+        else if(error.name){
+          const text = 'name debe ser de la menos 8 caracteres'
+          wrong(text)
         }
-      } 
-      else if(error.name){
-        const text = 'name debe ser de la menos 8 caracteres'
-        wrong(text)
-      }
-      else if(error.name1){
-        const text = 'El nombre debe contener solo letras'
-        wrong(text)
-      }
-      else if(error.dni){
-        const text = 'Ingrese dni valido' 
-        wrong(text)
-      }
-      else if(error.cel){
-        const text = 'error.cel.solonumeros+' 
-        wrong(text)
-      }
-      else if(error.cel1){
-        const text = 'error.cel.solonumeros' 
-        wrong(text)
+        else if(error.name1){
+          const text = 'El nombre debe contener solo letras'
+          wrong(text)
+        }
+        else if(error.dni){
+          const text = 'Ingrese dni valido' 
+          wrong(text)
+        }
+        else if(error.cel){
+          const text = 'error.cel.solonumeros+' 
+          wrong(text)
+        }
+        else if(error.cel1){
+          const text = 'error.cel.solonumeros' 
+          wrong(text)
+        }
+      } else {
+        wrong('checkea')
       }
     } else {
       wrong('las contraseñas no coinciden')      
@@ -266,7 +276,13 @@ function SignUp() {
               />
             </div>
             <div className="text-white text-xl flex flex-row items-center justify-center">
-              <input type="checkbox" name="TyC" id="tyc" />
+              <input 
+                type="checkbox" 
+                name="check" 
+                id="tyc"
+                value={check}
+                onChange={(e) => {handleChangeCheck(e)}}  
+              />
               <label className="m-5" htmlFor="tyc">
                 Agree to Terms and Conditions
               </label>
