@@ -14,14 +14,18 @@
     "Others" : "Others"
   },
   "navbar":{
-    
+      "Followers" : "Followers",
+      "Following" : "Following",
+      "Settings" : "Settings",
+      "Direct Messages" : "Direct Messages",
+      "Log Out" : "Log Out"
   },
   "Post":{
     "name" : "Name: ",
     "password" : "Password: "
   },
   "publications" :{
-    
+    "Loading" : "Loading"
   },
   "home":{
     "title" : "Night Out",

@@ -14,14 +14,18 @@
     "Others" : "Otro"
   },
   "navbar":{
-    
+    "Followers" : "Seguidores",
+      "Following" : "Seguidos",
+      "Settings" : "Configuración",
+      "Direct Messages" : "Mensajes Directos",
+      "Log Out" : "Cerrar Sesión"
   },
   "Post":{
     "name": "Nombre: ",
     "password": "Contraseña: "
   },
   "publications":{
-    
+    "Loading" : "Cargando"
   },
   "home":{
     "title": "Night Out",

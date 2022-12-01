@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../Context/GlobalContext";
 import Postear from "../Postear/Postear";
 import { UserAuth } from "../firebase/context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 function Publications() {
   const { allPublications } = useSelector((state) => state);
@@ -25,14 +26,14 @@ function Publications() {
       console.log("Mostrando Filtros");
     }
   };
-
+  const [t] = useTranslation('global')
   const { user } = UserAuth();
 
   return (
     <>
       <div className="w-4/5 bg-lila s:w-full">
         <div className="flex flex-row justify-between items-center w-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 p-5">
-          <h2 className="text-white text-2xl s:text-xl">Home</h2>
+          <h2 className="text-white text-2xl s:text-xl">{t("header.home")}</h2>
           <div className="flex flex-row text-white items-center justify-around">
             <p className="text-xl pr-5 s:text-lg">
               <span>Evento</span> en <span>Lugar</span>
@@ -45,7 +46,7 @@ function Publications() {
         {!user ? <Postear /> : ""}
 
         {!allPublications.length ? (
-            <h1>CARGANDO</h1>
+            <h1>{t("publications.Loading")}</h1>
         ) : (
           allPublications.map((p, i) => (
             <div key={i}>
