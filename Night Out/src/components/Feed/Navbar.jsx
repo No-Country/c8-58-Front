@@ -1,24 +1,47 @@
 import React from "react";
 import { useContext } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, NavLink } from 'react-router-dom'
 import { GlobalContext } from "../../Context/GlobalContext";
 import { useTranslation } from 'react-i18next'
+import { Alerts } from '../alerts/Alerts'
+import { UserAuth } from '../firebase/context/AuthContext'
+import { useSelector } from 'react-redux'
 
 function Navbar() {
 
   let {NavbarMostrado} = useContext(GlobalContext)
   const [t] = useTranslation('global')
 
+  const navigate = useNavigate()
+  const { logOut, user } = UserAuth()
+  const { correct, wrong } = Alerts()
+  const userData = useSelector(state => state.userDetail)
+
+  const logOutSesion = async() => {
+    try {
+      await logOut()
+      await correct('Sesion Cerrada')  
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className={NavbarMostrado === false ? "bg-gradiante1 fixed text-white flex flex-col justify-between NavbarOculto z-50" : "bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50"}>
       <div>
       <div className="self-center flex flex-col items-center justify-evenly mt-4">
-        <Link to="/User">
+        {user ? (<Link to="/User">
         <img
           src="src\assets\candado.svg"
           alt="foto perfil"
           className="w-20 rounded-full"
-        /></Link>
+        /></Link>) : (
+        <img
+          src="src\assets\candado.svg"
+          alt="foto perfil"
+          className="w-20 rounded-full"
+        />)}
         <p className="text-xl">Nombre</p>
         <div className="flex flex-row mb-4">
           <p className="text-sm text-gray">
@@ -30,12 +53,30 @@ function Navbar() {
       <div>
         
       <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <Link to="/Settings-User"><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Settings")}</h2></Link>
+      {user ? (<Link to="/Settings-User"><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Settings")}</h2></Link>) : (<Link to="/Settings-Configuration"><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Settings")}</h2></Link>)}
       <span className="bg-lineaNavbar h-1 w-full block"></span>
       <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Direct Messages")}</h2>
       <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Log Out")}</h2>
-      <span className="bg-lineaNavbar h-1 w-full block"></span>
+      {/* <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Log Out")}</h2> */}
+      {
+        user ? 
+        <span>
+            {
+              userData[0] !== undefined ? `Welcome ${userData[0].name}` : ""
+            }
+            <button onClick={logOutSesion}><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Log Out")}</h2></button>
+            <span className="bg-lineaNavbar h-1 w-full block"></span>
+          </span> :
+          (<>
+          <NavLink
+          className=""
+          to="/Sign-In"
+        >
+          <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("header.signin")}</h2>
+          
+        </NavLink>
+        <span className="bg-lineaNavbar h-1 w-full block"></span></>)
+        }
       </div>
       </div>
       <div>

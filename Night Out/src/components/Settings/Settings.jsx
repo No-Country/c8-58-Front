@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, NavLink, Link } from "react-router-dom";
 import Language from "../language/Language";
+import { UserAuth } from '../firebase/context/AuthContext'
 
 function Settings() {
   const activeStyle = {
@@ -8,7 +9,7 @@ function Settings() {
     textColor: "white",
     listStyle: "round",
   };
-  let activeClassName = "underline";
+  const { logOut, user } = UserAuth()
   return (
     <div className="flex lg:flex-row justify-between lg:items-start mt-10 w-full s:flex-col s:items-center 2xl:w-1/2">
       <div className="flex flex-col s:items-center s:w-full">
@@ -23,14 +24,14 @@ function Settings() {
         </Link>
         <div className="bg-lila p-5 lg:mr-10 s:mr-0 s:w-3/4 s:text-center s:mb-5 md:w-1/2 lg:w-3/4">
           <ul className="text-white">
-            <li className="mt-3 mb-3">
+            { user ? (<li className="mt-3 mb-3">
               <NavLink
                 to="/Settings-User"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 User
               </NavLink>
-            </li>
+            </li>) : ""}
             <li className="mt-3 mb-3">
               <NavLink
                 to="/Settings-Configuration"
