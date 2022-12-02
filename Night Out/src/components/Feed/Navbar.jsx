@@ -19,7 +19,8 @@ function Navbar() {
   const logOutSesion = async () => {
     try {
       await logOut();
-      await correct("Sesion Cerrada");
+      const text = `${t("signIn.close")}`
+      await correct(text);
       navigate("/");
     } catch (error) {
       console.log(error);
