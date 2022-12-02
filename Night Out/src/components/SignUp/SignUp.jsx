@@ -233,7 +233,7 @@ function SignUp() {
               alt="imagen dni"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-4"
               type="number"
               name="dni"
               //id="dni"
@@ -267,7 +267,7 @@ function SignUp() {
               alt="imagen calendario"
             />
             <input
-              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray"
+              className="colorNegro w-full rounded-r-full outline-none text-xl bg-gray pr-4"
               type="date"
               name="years"
               id="cumple"

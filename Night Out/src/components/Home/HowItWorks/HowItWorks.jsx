@@ -2,7 +2,7 @@ import React from "react";
 
 function HowItWorks() {
   return (
-    <div className="flex flex-col items-center colorBlanco w-full">
+    <div className="flex flex-col items-center colorBlanco w-full lg:mb-14">
       <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 2xl:text-4xl s:px-10 s:text-3xl">
         How it works
       </h2>

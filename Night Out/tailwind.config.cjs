@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionDuration: {
+        "5000" : "5000ms"
+      },
       height: {
         '0.1': '1px',
         '0.2': '2px',

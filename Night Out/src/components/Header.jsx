@@ -42,6 +42,19 @@ function Header() {
     }
   };
 
+  const { BusquedaMostrado, setBusquedaMostrado } = useContext(GlobalContext)
+
+  const mostrarBusqueda = (e) => {
+    if ( BusquedaMostrado === false ) {
+      setBusquedaMostrado(true)
+      console.log("Mostrando Busqueda")
+    }
+    if ( BusquedaMostrado === true ) {
+      setBusquedaMostrado(false)
+      console.log("Ocultando Busqueda")
+    }
+  }
+
   return (
     <header
       className={
@@ -135,16 +148,18 @@ function Header() {
             path="/:ruta"
             element={
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:py-2 l:text-xl md:p-0">
-                <li className="">
-                  <form className="flex flex-row bg-gray p-2 rounded-full items-center">
+                <li className=" flex items-center relative bg-gray rounded-full transition-all duration-1000 ease-in-out mb-1">
+                <button className={ BusquedaMostrado === false ? "bg-gray p-2 rounded-full top-0 w-11 h-11 left-0 " : "bg-gray p-2 rounded-l-full top-0 w-11 h-11 left-0"} onClick={mostrarBusqueda}>
                     <img
-                      className="h-5 mr-3"
+                      className="h-5 mx-auto"
                       src="src\assets\lupa.svg"
                       alt="lupa"
                     />
+                  </button>
+                  <form className={ BusquedaMostrado === false ? " bg-gray p-0 rounded-r-full items-center w-0 h-10 mb-1 transition-w duration-1000 ease-in-out absolute left-1/2 -z-10" : " bg-gray p-2 items-center relative mb-1 rounded-r-full transition-w duration-1000 ease-in-out h-10"}>
                     <input
                       type="search"
-                      className="bg-gray outline-none text-black"
+                      className={ BusquedaMostrado === false ? "bg-gray outline-none text-black  rounded-r-full transition-w duration-1000 ease-in-out" : "bg-gray outline-none text-black rounded-r-full transition-w duration-1000 ease-in-out"}
                     />
                   </form>{" "}
                 </li>
