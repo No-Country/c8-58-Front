@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next'
+import { Routes, Route } from 'react-router-dom'
 
 const Language = () => {
 const [t, i18n] = useTranslation('global')
@@ -18,11 +19,10 @@ const [t, i18n] = useTranslation('global')
 
   return (
     <>
-    <p className="mr-3">Change Language:</p>
     <select 
       onChange={(e) => handleLanguage(e)}
       defaultValue={idioma}  
-      className="text-black bg-gray p-2 pr-4 pl-4 outline-none border-none rounded-full appearance-none hover:cursor-pointer"
+      className="text-black bg-gray p-2 pr-4 pl-4 outline-none border-none rounded-full appearance-none hover:cursor-pointer text-center"
     >
       <option value='en'>EN</option>
       <option value='es'>ES</option>

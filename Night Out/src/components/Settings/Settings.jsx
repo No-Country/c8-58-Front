@@ -127,6 +127,7 @@ function Settings() {
                 </div>
                 <span className="bg-gray h-0.1 w-full block"></span>
                 <div className="w-full flex flex-row items-center mt-3 mb-3 py-6">
+                  <p className="mr-3">Change Language:</p>
                   <Language />
                 </div>
               </form>

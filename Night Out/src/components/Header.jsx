@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Form, NavLink, Route, Routes, Link } from "react-router-dom";
 import { UserAuth } from "./firebase/context/AuthContext";
 import { getUserDetail } from "../redux/actions/index";
+import Language from './language/Language'
 
 import { useTranslation } from "react-i18next";
 
@@ -73,6 +74,7 @@ function Header() {
             path="/"
             element={
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:pt-2 s:pb-2 l:text-xl md:p-0">
+                {/* <li><Language /></li> */}
                 <li className="p-5">
                   <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/">
                     {t("header.home")}
@@ -98,6 +100,7 @@ function Header() {
             path="/Sign-up"
             element={
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:pt-2 s:pb-2 l:text-xl md:p-0">
+                {/* <li><Language /></li> */}
                 <li className="p-5">
                   <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/">
                     {t("header.home")}
@@ -123,6 +126,7 @@ function Header() {
             path="/Sign-In"
             element={
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:pt-2 s:pb-2 l:text-xl md:p-0">
+                {/* <li><Language /></li> */}
                 <li className="p-5">
                   <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/">
                     {t("header.home")}
@@ -145,7 +149,7 @@ function Header() {
             }
           ></Route>
           <Route
-            path="/:ruta"
+            path="/*"
             element={
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:py-2 l:text-xl md:p-0">
                 <li className=" flex items-center relative bg-gray rounded-full transition-all duration-1000 ease-in-out mb-1">
@@ -156,10 +160,10 @@ function Header() {
                       alt="lupa"
                     />
                   </button>
-                  <form className={ BusquedaMostrado === false ? " bg-gray p-0 rounded-r-full items-center w-0 h-10 mb-1 transition-w duration-1000 ease-in-out absolute left-1/2 -z-10" : " bg-gray p-2 items-center relative mb-1 rounded-r-full transition-w duration-1000 ease-in-out h-10"}>
+                  <form className={ BusquedaMostrado === false ? " bg-gray p-0 rounded-r-full items-center w-0 h-10 mb-1 absolute left-1/2 -z-10" : " bg-gray p-2 items-center relative mb-1 rounded-r-full h-10"}>
                     <input
                       type="search"
-                      className={ BusquedaMostrado === false ? "bg-gray outline-none text-black  rounded-r-full transition-w duration-1000 ease-in-out" : "bg-gray outline-none text-black rounded-r-full transition-w duration-1000 ease-in-out"}
+                      className={ BusquedaMostrado === false ? "bg-gray outline-none text-black  rounded-r-full -z-10 w-0" : "bg-gray outline-none text-black rounded-r-full"}
                     />
                   </form>{" "}
                 </li>
