@@ -32,7 +32,7 @@ function Filters() {
 
   const handleLugar = (Place) => {
     setFiltroLugar(Place.target.value);
-    if (cambioFiltros === false) {
+    if (cambioFiltros == false) {
       setCambioFiltros(true);
     }
   };
