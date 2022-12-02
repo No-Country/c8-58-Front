@@ -16,7 +16,7 @@ const [t, i18n] = useTranslation('global')
 
   return (
     <>
-    <p className="mr-3">Change Language:</p>
+    <p className="mr-3">{t("language.change")}</p>
     <select 
       onChange={(e) => handleLanguage(e)}
       defaultValue={idioma}  

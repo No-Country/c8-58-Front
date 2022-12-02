@@ -19,7 +19,7 @@
     "user-not-found": "user not found",
     "not-email": "Enter an email, please",
     "not-password": "Enter a password, please",
-    "correct": "session started",
+    "correct": "session started, welcome ",
     "close": "closed session"
   },
   "language":{
