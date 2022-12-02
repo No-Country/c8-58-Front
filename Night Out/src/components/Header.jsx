@@ -68,6 +68,7 @@ function Header() {
         <img className="h-10" src="src\assets\logo.png" alt="logo" />
         <h1 className="text-2xl font-semibold ml-5">Night Out</h1>
       </div>
+      <div className="flex flex-row items-center justify-evenly s:w-full s:my-2 md:w-auto lg:my-0">
       <Routes>
         <Route path="/"></Route>
         <Route path="/Sign-In"></Route>
@@ -76,7 +77,7 @@ function Header() {
           path="/*"
           element={
             <>
-              <form className=" bg-gray p-2 items-center relative rounded-full flex flex-row w-1/6">
+              <form className=" bg-gray p-2 items-center relative rounded-full flex flex-row w-1/6 s:w-4/5">
                 <img className="h-5 mr-3" src="src\assets\lupa.svg" alt="lupa" />
                 <input
                   type="search"
@@ -183,6 +184,7 @@ function Header() {
           ></Route>
         </Routes>
       </nav>
+      </div>
     </header>
   );
 }

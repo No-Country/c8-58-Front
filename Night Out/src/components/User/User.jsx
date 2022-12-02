@@ -6,7 +6,7 @@ function User() {
   return (
     <div className='text-white w-4/5 s:w-full'>
         <div className='bg-gradient-to-b from-gradiante1 via-gradiante2 to-gradiante4 mb-10 rounded-b-3xl overflow-hidden relative'>
-            <Link to="/Feed"><img className='w-10 absolute top-3 left-3 rotate-180 s:w-8' src="src\assets\flechaBlancaDerecha.png" alt="Feed" /></Link>
+            <div className='bg-black absolute top-3 left-3 rounded-full bg-opacity-50 p-2'><Link to="/Feed" ><img className='w-10 rotate-180 s:w-8' src="src\assets\flechaBlancaDerecha.png" alt="Feed" /></Link></div>
             <img className='w-full rounded-b-3xl' src="src\assets\PortadaPrueba.png" alt="Portada" />
             <div className='p-8 relative'>
             <div className='flex flex-row absolute 2xl:-top-24 w-11/12 items-end justify-between s:-top-10 lg:-top-16'>
