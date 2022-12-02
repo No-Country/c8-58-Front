@@ -1,83 +1,130 @@
 import React from "react";
 import { useContext } from "react";
-import { Link, useNavigate, NavLink } from 'react-router-dom'
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import { GlobalContext } from "../../Context/GlobalContext";
-import { useTranslation } from 'react-i18next'
-import { Alerts } from '../alerts/Alerts'
-import { UserAuth } from '../firebase/context/AuthContext'
-import { useSelector } from 'react-redux'
+import { useTranslation } from "react-i18next";
+import { Alerts } from "../alerts/Alerts";
+import { UserAuth } from "../firebase/context/AuthContext";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  let { NavbarMostrado } = useContext(GlobalContext);
+  const [t] = useTranslation("global");
 
-  let {NavbarMostrado} = useContext(GlobalContext)
-  const [t] = useTranslation('global')
+  const navigate = useNavigate();
+  const { logOut, user } = UserAuth();
+  const { correct, wrong } = Alerts();
+  const userData = useSelector((state) => state.userDetail);
 
-  const navigate = useNavigate()
-  const { logOut, user } = UserAuth()
-  const { correct, wrong } = Alerts()
-  const userData = useSelector(state => state.userDetail)
-
-  const logOutSesion = async() => {
+  const logOutSesion = async () => {
     try {
-      await logOut()
-      await correct('Sesion Cerrada')  
-      navigate('/')
+      await logOut();
+      await correct("Sesion Cerrada");
+      navigate("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
-    <div className={NavbarMostrado === false ? "bg-gradiante1 fixed text-white flex flex-col justify-between NavbarOculto z-50" : "bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50"}>
+    <div
+      className={
+        NavbarMostrado === false
+          ? "bg-gradiante1 fixed text-white flex flex-col justify-between NavbarOculto z-50"
+          : "bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50"
+      }
+    >
       <div>
-      <div className="self-center flex flex-col items-center justify-evenly mt-4">
-        {user ? (<Link to="/User">
-        <img
-          src="src\assets\candado.svg"
-          alt="foto perfil"
-          className="w-20 rounded-full"
-        /></Link>) : (
-        <img
-          src="src\assets\candado.svg"
-          alt="foto perfil"
-          className="w-20 rounded-full"
-        />)}
-        <p className="text-xl">Nombre</p>
-        <div className="flex flex-row mb-4">
-          <p className="text-sm text-gray">
-            <span className="text-white">55M</span> {t("navbar.Followers")}
-            <span className="ml-5 text-white">30</span> {t("navbar.Following")}
-          </p>
+        <div className="self-center flex flex-col items-center justify-evenly mt-4">
+          {user ? (
+            <Link to="/User">
+              <img
+                src="src\assets\candado.svg"
+                alt="foto perfil"
+                className="w-20 rounded-full"
+              />
+            </Link>
+          ) : (
+            <img
+              src="src\assets\candado.svg"
+              alt="foto perfil"
+              className="w-20 rounded-full"
+            />
+          )}
+          <p className="text-xl">@Nombre</p>
+          <div className="flex flex-row mb-4">
+            <p className="text-sm text-gray">
+              <span className="text-white">55M</span> {t("navbar.Followers")}
+              <span className="ml-5 text-white">30</span>{" "}
+              {t("navbar.Following")}
+            </p>
+          </div>
         </div>
-      </div>
-      <div>
-        
-      <span className="bg-lineaNavbar h-1 w-full block"></span>
-      {user ? (<Link to="/Settings-User"><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Settings")}</h2></Link>) : (<Link to="/Settings-Configuration"><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Settings")}</h2></Link>)}
-      <span className="bg-lineaNavbar h-1 w-full block"></span>
-      <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Direct Messages")}</h2>
-      <span className="bg-lineaNavbar h-1 w-full block"></span>
-      {/* <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Log Out")}</h2> */}
-      {
-        user ? 
-        <span>
-            {
-              userData[0] !== undefined ? `Welcome ${userData[0].name}` : ""
-            }
-            <button onClick={logOutSesion}><h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("navbar.Log Out")}</h2></button>
-            <span className="bg-lineaNavbar h-1 w-full block"></span>
-          </span> :
-          (<>
-          <NavLink
-          className=""
-          to="/Sign-In"
-        >
-          <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">{t("header.signin")}</h2>
-          
-        </NavLink>
-        <span className="bg-lineaNavbar h-1 w-full block"></span></>)
-        }
-      </div>
+        <div>
+          <span className="bg-lineaNavbar h-1 w-full block"></span>
+          <ul>
+            <li>
+              {user ? (
+                <>
+                  <Link to="/User">
+                    <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                      User
+                    </h2>
+                  </Link>
+                  <span className="bg-lineaNavbar h-1 w-full block"></span>
+                </>
+              ) : (
+                ""
+              )}
+            </li>
+            <li>
+              <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                {t("navbar.Direct Messages")}
+              </h2>
+              <span className="bg-lineaNavbar h-1 w-full block"></span>
+            </li>
+            <li>
+              {user ? (
+                <Link to="/Settings-User">
+                  <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                    {t("navbar.Settings")}
+                  </h2>
+                </Link>
+              ) : (
+                <Link to="/Settings-Configuration">
+                  <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                    {t("navbar.Settings")}
+                  </h2>
+                </Link>
+              )}
+              <span className="bg-lineaNavbar h-1 w-full block"></span>
+            </li>
+            <li>
+              {user ? (
+                <span>
+                  {userData[0] !== undefined
+                    ? `Welcome ${userData[0].name}`
+                    : ""}
+                  <button onClick={logOutSesion}>
+                    <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                      {t("navbar.Log Out")}
+                    </h2>
+                  </button>
+                  <span className="bg-lineaNavbar h-1 w-full block"></span>
+                </span>
+              ) : (
+                <>
+                  <NavLink className="" to="/Sign-In">
+                    <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                      {t("header.signin")}
+                    </h2>
+                  </NavLink>
+                  <span className="bg-lineaNavbar h-1 w-full block"></span>
+                </>
+              )}
+            </li>
+          </ul>
+        </div>
       </div>
       <div>
         <span className="bg-white h-0.1 w-4/5 block mx-auto"></span>
