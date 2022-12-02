@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Form, NavLink, Route, Routes, Link } from "react-router-dom";
 import { UserAuth } from "./firebase/context/AuthContext";
 import { getUserDetail } from "../redux/actions/index";
-import Language from './language/Language'
+import Language from "./language/Language";
 
 import { useTranslation } from "react-i18next";
 
@@ -43,31 +43,50 @@ function Header() {
     }
   };
 
-  const { BusquedaMostrado, setBusquedaMostrado } = useContext(GlobalContext)
+  const { BusquedaMostrado, setBusquedaMostrado } = useContext(GlobalContext);
 
   const mostrarBusqueda = (e) => {
-    if ( BusquedaMostrado === false ) {
-      setBusquedaMostrado(true)
-      console.log("Mostrando Busqueda")
+    if (BusquedaMostrado === false) {
+      setBusquedaMostrado(true);
+      console.log("Mostrando Busqueda");
     }
-    if ( BusquedaMostrado === true ) {
-      setBusquedaMostrado(false)
-      console.log("Ocultando Busqueda")
+    if (BusquedaMostrado === true) {
+      setBusquedaMostrado(false);
+      console.log("Ocultando Busqueda");
     }
-  }
+  };
 
   return (
     <header
       className={
         NavbarMostrado === false
-          ? "text-white flex flex-row items-center justify-around bg-gradiante1 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0"
-          : "text-white flex flex-row items-center justify-around  bg-gradiante1 sticky top-0 z-10 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0"
+          ? "text-white flex flex-row items-center justify-evenly bg-gradiante1 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0 lg:py-2"
+          : "text-white flex flex-row items-center justify-evenly  bg-gradiante1 sticky top-0 z-10 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0 lg:py-2"
       }
     >
       <div className="flex flex-row  items-center">
         <img className="h-10" src="src\assets\logo.png" alt="logo" />
         <h1 className="text-2xl font-semibold ml-5">Night Out</h1>
       </div>
+      <Routes>
+        <Route path="/"></Route>
+        <Route path="/Sign-In"></Route>
+        <Route path="/Sign-Up"></Route>
+        <Route
+          path="/*"
+          element={
+            <>
+              <form className=" bg-gray p-2 items-center relative rounded-full flex flex-row w-1/6">
+                <img className="h-5 mr-3" src="src\assets\lupa.svg" alt="lupa" />
+                <input
+                  type="search"
+                  className="bg-gray outline-none text-black w-full"
+                />
+              </form>{" "}
+            </>
+          }
+        ></Route>
+      </Routes>
       <nav>
         <Routes>
           <Route
@@ -151,33 +170,15 @@ function Header() {
           <Route
             path="/*"
             element={
-              <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:py-2 l:text-xl md:p-0">
-                <li className=" flex items-center relative bg-gray rounded-full transition-all duration-1000 ease-in-out mb-1">
-                <button className={ BusquedaMostrado === false ? "bg-gray p-2 rounded-full top-0 w-11 h-11 left-0 " : "bg-gray p-2 rounded-l-full top-0 w-11 h-11 left-0"} onClick={mostrarBusqueda}>
-                    <img
-                      className="h-5 mx-auto"
-                      src="src\assets\lupa.svg"
-                      alt="lupa"
-                    />
-                  </button>
-                  <form className={ BusquedaMostrado === false ? " bg-gray p-0 rounded-r-full items-center w-0 h-10 mb-1 absolute left-1/2 -z-10" : " bg-gray p-2 items-center relative mb-1 rounded-r-full h-10"}>
-                    <input
-                      type="search"
-                      className={ BusquedaMostrado === false ? "bg-gray outline-none text-black  rounded-r-full -z-10 w-0" : "bg-gray outline-none text-black rounded-r-full"}
-                    />
-                  </form>{" "}
-                </li>
-                <li className="p-5 s:p-3">
-                  <button onClick={mostrarNavbar}>
-                    <img
-                      src="src\assets\menuBlanco.png"
-                      alt="menu"
-                      className="h-8"
-                    />
-                  </button>
-                </li>
-                
-              </ul>
+              <div className="flex flex-row items-center just">
+                <button onClick={mostrarNavbar}>
+                  <img
+                    src="src\assets\menuBlanco.png"
+                    alt="menu"
+                    className="h-8"
+                  />
+                </button>
+              </div>
             }
           ></Route>
         </Routes>

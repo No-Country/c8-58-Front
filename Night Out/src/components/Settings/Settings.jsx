@@ -12,7 +12,7 @@ function Settings() {
   };
   const { logOut, user } = UserAuth()
   return (
-    <div className="flex lg:flex-row justify-between lg:items-start mt-10 w-full s:flex-col s:items-center 2xl:w-1/2">
+    <div className="flex lg:flex-row justify-between lg:items-start mt-10 s:flex-col s:items-center 2xl:w-1/2 w-4/5">
       <div className="flex flex-col s:items-center s:w-full lg:w-1/2">
         <Link
           to="/Feed"
