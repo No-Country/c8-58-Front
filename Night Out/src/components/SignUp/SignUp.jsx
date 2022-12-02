@@ -8,6 +8,8 @@ import { postUser, getUserDetail } from '../../redux/actions/index'
 import { UserAuth } from '../firebase/context/AuthContext'
 import { Alerts } from '../alerts/Alerts'
 
+import { useTranslation } from 'react-i18next';
+
 function validate(user) {
   let error = {}
   
@@ -147,11 +149,12 @@ function SignUp() {
     }
   }
 
+  const [t] = useTranslation('global')
   return (
     <>
     <Helmet>
       <title>
-        Night Out - Sign Up
+      {t("signup.Night Out - Sign Up")}
       </title>
     </Helmet>
     <div className="flex flex-col items-center justify-evenly m-20 w-full">
@@ -159,7 +162,7 @@ function SignUp() {
         className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl text-white mb-16 md:text-3xl s:px-10 s:text-center s:mb-5 s:mt-5 s:text-2xl"
         onSubmit={handleSubmit}
       >
-        Sign Up
+        {t("signup.Sign up")}
       </h2>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl flex flex-col justify-evenly items-center lg:w-3/4 md:p-10 text-center s:w-11/12 s:px-3 s:py-10 xl:w-1/2 2xl:w-1/3">
         <form className="flex flex-col w-full " action="" onSubmit={(e) => handleSubmit(e)}>
@@ -285,14 +288,14 @@ function SignUp() {
             className="s:order-2 md:order-1"
           />
             <label className="m-5 text-center s:order-1 md:order-2" htmlFor="tyc">
-              Agree to Terms and Conditions
+            {t("signup.Agree to Terms and Conditions")}
             </label>
           </div>
           <button
             className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold hover:bg-white s:text-lg"
             type='submit'
           >
-            Sign up!
+            {t("signup.Sign up!")}
           </button>
         </form>
       </div>

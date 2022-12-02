@@ -7,6 +7,8 @@ import { getUserDetail } from "../../../redux/actions";
 import { UserAuth } from "../../firebase/context/AuthContext";
 import { Alerts } from "../../alerts/Alerts";
 
+import { useTranslation } from 'react-i18next';
+
 function validate(userSI) {
   let error = {}
   
@@ -86,13 +88,14 @@ function SignIn() {
 
   useEffect(() => {}, []);
 
+  const [t] = useTranslation('global')
   return (
     <div
       className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 "
       id="logear"
     >
       <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 md:text-3xl s:px-10 s:text-center s:mb-5 s:mt-5 s:text-2xl">
-        What now?
+      {t("signin.What now?")}
       </h2>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl lg:p-10 flex flex-col justify-evenly items-center lg:w-3/4 mb-10 s:w-full s:p-5 xl:w-1/2 2xl:w-1/3">
         <h2 className="font-bold text-4xl s:text-2xl md:text-3xl">Sign in!</h2>
@@ -106,7 +109,7 @@ function SignIn() {
             className="md:text-xl font-bold m-2 ml-5 s:text-lg"
             htmlFor="username"
           >
-            Email
+            {t("signin.Email")}
           </label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full mb-5">
             <img
@@ -126,7 +129,7 @@ function SignIn() {
             className="md:text-xl font-bold m-2 ml-5 s:text-lg"
             htmlFor="password"
           >
-            Password
+            {t("signin.Password")}
           </label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full  mb-5">
             <img
@@ -143,22 +146,22 @@ function SignIn() {
             />
           </div>
           <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold hover:bg-white s:text-lg">
-            Sign in
+          {t("signin.Sign in")}
           </button>
         </form>
       </div>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl flex flex-col justify-evenly items-center lg:w-3/4 p-10 text-center s:w-full s:p-5 xl:w-1/2 2xl:w-1/3">
         <h2 className="font-bold text-4xl mb-10 s:text-2xl md:text-3xl">
-          Don't have an account yet?
+        {t("signin.Don't have an account yet?")}
         </h2>
         <h2 className="font-bold text-4xl mb-10 s:text-2xl md:text-3xl">
-          Sign up!
+        {t("signin.Sign up")}
         </h2>
         <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold animate-pulse s:text-lg">
           {user ? (
-            <Link to="/">Let's go!</Link>
+            <Link to="/">{t("signin.Let's go!")}</Link>
           ) : (
-            <Link to="/Sign-up">Let's go!</Link>
+            <Link to="/Sign-up">{t("signin.Let's go!")}</Link>
           )}
         </button>
       </div>
