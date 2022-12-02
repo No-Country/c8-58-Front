@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet"
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from "react-i18next";
 
 import { postUser, getUserDetail } from '../../redux/actions/index'
 
@@ -30,6 +31,7 @@ function validate(user) {
 }
 
 function SignUp() {
+  const [t] = useTranslation("global");
   const { createUserEmailPassword } = UserAuth()
   const { correct, wrong } = Alerts()
 
@@ -91,59 +93,60 @@ function SignUp() {
               }))
               localStorage.setItem('id', userData.user.uid)
               localStorage.setItem('email', email)
-              correct('Registrado')
+              let text = `${t("signUp.registered")}` 
+              correct(text)
               await dispatch(getUserDetail(userData.user.uid))
             }
             navigate('/feed')
           } catch(error) {
             console.log(error.code)
             if(error.code === 'auth/missing-email'){
-              const text = error.code 
+              const text = `${t("signUp.missing-email")}` 
               wrong(text)
             }
             if(error.code === 'auth/invalid-email'){
-              const text = error.code 
+              const text = `${t("signUp.invalid-email")}`  
               wrong(text)
             }
             if(error.code === 'auth/email-already-in-use'){
-              const text = error.code 
+              const text = `${t("signUp.email-already-in-use")}`  
               wrong(text)
             }
             if(error.code === 'auth/internal-error'){//cuando pondo email y no contraseña
-              const text = error.code 
+              const text = `${t("signUp.internal-error")}`  
               wrong(text)
             }
             if(error.code === 'auth/weak-password'){
-              const text = error.code 
+              const text = `${t("signUp.weak-password")}`  
               wrong(text)
             }
           }
         } 
         else if(error.name){
-          const text = 'name debe ser de la menos 8 caracteres'
+          const text = `${t("signUp.nameLength")}` 
           wrong(text)
         }
         else if(error.name1){
-          const text = 'El nombre debe contener solo letras'
+          const text = `${t("signUp.nameLetter")}` 
           wrong(text)
         }
         else if(error.dni){
-          const text = 'Ingrese dni valido' 
+          const text = `${t("signUp.dni")}`  
           wrong(text)
         }
         else if(error.cel){
-          const text = 'error.cel.solonumeros+' 
+          const text = `${t("signUp.cel+")}`  
           wrong(text)
         }
         else if(error.cel1){
-          const text = 'error.cel.solonumeros' 
+          const text = `${t("signUp.cel")}`  
           wrong(text)
         }
       } else {
-        wrong('checkea')
+        wrong(`${t("signUp.check")}` )
       }
     } else {
-      wrong('las contraseñas no coinciden')      
+      wrong(`${t("signUp.password")}` )      
     }
   }
 

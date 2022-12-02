@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"
+import { useTranslation } from "react-i18next";
 
 import { getUserDetail } from "../../../redux/actions";
 
@@ -18,6 +19,7 @@ function validate(userSI) {
 }
 
 function SignIn() {
+  const [t] = useTranslation("global");
   const { signInEmailPassword, user } = UserAuth();
   const { correct, wrong } = Alerts();
 
@@ -49,7 +51,8 @@ function SignIn() {
       console.log(email)
       console.log(password)
       const userSignIn = await signInEmailPassword(email, password)
-      await correct('Sesion Iniciada')
+      let text = `${t("signIn.correct")}`
+      await correct(text)
       await dispatch(getUserDetail(userSignIn.user.uid))
       localStorage.setItem('id', userSignIn.user.uid)
       localStorage.setItem('email', email)
@@ -60,21 +63,21 @@ function SignIn() {
       navigate('/Feed')
     } catch (error) {
       if(error.code === 'auth/wrong-password'){
-        const text = error.code
+        const text = `${t("signIn.wrong-password")}`
         wrong(text)
       }
       if (error.code === "auth/user-not-found") {
-        const text = error.code;
+        const text = `${t("signIn.user-not-found")}`
         wrong(text);
       }
     }
   }
   else if(error.email){
-    const text = `${error.email}`
+    const text = `${t("signIn.not-email")}`
     wrong(text)
   }
   else if(error.password){
-    const text = `${error.password}`
+    const text = `${t("signIn.not-password")}`
     wrong(text)
   }
 }
