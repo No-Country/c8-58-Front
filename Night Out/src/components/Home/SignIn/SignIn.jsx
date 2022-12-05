@@ -159,7 +159,7 @@ function SignIn() {
         {t("signin.Don't have an account yet?")}
         </h2>
         <h2 className="font-bold text-4xl mb-10 s:text-2xl md:text-3xl">
-        {t("signin.Sign up")}
+        {t("signin.Sign up!")}
         </h2>
         <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold animate-pulse s:text-lg">
           {user ? (
