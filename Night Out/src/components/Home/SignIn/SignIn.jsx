@@ -62,7 +62,7 @@ function SignIn() {
         email:"",
         password:""
       })
-      navigate('/Feed')
+      navigate('/feed')
     } catch (error) {
       if(error.code === 'auth/wrong-password'){
         const text = `${t("signIn.wrong-password")}`
@@ -163,7 +163,7 @@ function SignIn() {
         </h2>
         <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold animate-pulse s:text-lg">
           {user ? (
-            <Link to="/Feed">{t("signin.Let's go!")}</Link>
+            <Link to="/feed">{t("signin.Let's go!")}</Link>
           ) : (
             <Link to="/Sign-up">{t("signin.Let's go!")}</Link>
           )}

@@ -145,6 +145,7 @@ function Settings() {
                   />
                 </div>
               </form>
+              <button onClick={confirmLang}>Confirm</button>
             </div>
           }
         ></Route>
