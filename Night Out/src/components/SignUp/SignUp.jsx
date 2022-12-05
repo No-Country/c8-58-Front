@@ -9,8 +9,6 @@ import { postUser, getUserDetail } from '../../redux/actions/index'
 import { UserAuth } from '../firebase/context/AuthContext'
 import { Alerts } from '../alerts/Alerts'
 
-import { useTranslation } from 'react-i18next';
-
 function validate(user) {
   let error = {}
   
@@ -151,8 +149,6 @@ function SignUp() {
       wrong(`${t("signUp.password")}` )      
     }
   }
-
-  const [t] = useTranslation('global')
   return (
     <>
     <Helmet>
@@ -165,7 +161,7 @@ function SignUp() {
         className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl text-white mb-16 md:text-3xl s:px-10 s:text-center s:mb-5 s:mt-5 s:text-2xl"
         onSubmit={handleSubmit}
       >
-        {t("signup.Sign up")}
+        {t("signup.Sign Up")}
       </h2>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl flex flex-col justify-evenly items-center lg:w-3/4 md:p-10 text-center s:w-11/12 s:px-3 s:py-10 xl:w-1/2 2xl:w-1/3">
         <form className="flex flex-col w-full " action="" onSubmit={(e) => handleSubmit(e)}>

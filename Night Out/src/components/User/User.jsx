@@ -20,15 +20,9 @@ function User() {
                 </div>
                 </div>
             </div>
-<<<<<<< HEAD
-            <div className='2xl:mt-20 s:mt-10'>
-                <h2 className='text-2xl font-semibold s:text-xl'>Description</h2>
-                <p className='text-lg pt-5 s:text-base'>Moderador de Night Out</p>
-=======
             <div className='mt-20 s:mt-10'>
                 <h2 className='text-2xl font-semibold s:text-xl'>{t("user.Description")}</h2>
                 <p className='text-lg pt-5 s:text-base'>{t("user.Night Out Mod")}</p>
->>>>>>> rodri
             </div>
             </div>
         </div>

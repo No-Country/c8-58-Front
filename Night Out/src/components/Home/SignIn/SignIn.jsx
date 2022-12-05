@@ -8,8 +8,6 @@ import { getUserDetail } from "../../../redux/actions";
 import { UserAuth } from "../../firebase/context/AuthContext";
 import { Alerts } from "../../alerts/Alerts";
 
-import { useTranslation } from 'react-i18next';
-
 function validate(userSI) {
   let error = {}
   
@@ -64,7 +62,7 @@ function SignIn() {
         email:"",
         password:""
       })
-      navigate('/Feed')
+      navigate('/feed')
     } catch (error) {
       if(error.code === 'auth/wrong-password'){
         const text = `${t("signIn.wrong-password")}`
@@ -159,11 +157,11 @@ function SignIn() {
         {t("signin.Don't have an account yet?")}
         </h2>
         <h2 className="font-bold text-4xl mb-10 s:text-2xl md:text-3xl">
-        {t("signin.Sign up")}
+        {t("signin.Sign up!")}
         </h2>
         <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold animate-pulse s:text-lg">
           {user ? (
-            <Link to="/Feed">{t("signin.Let's go!")}</Link>
+            <Link to="/feed">{t("signin.Let's go!")}</Link>
           ) : (
             <Link to="/Sign-up">{t("signin.Let's go!")}</Link>
           )}
