@@ -56,6 +56,17 @@ function Header() {
     }
   };
 
+  const logOutSesion = async () => {
+    try {
+      await logOut();
+      const text = `${t("signIn.close")}`
+      await correct(text);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <header
       className={
@@ -106,12 +117,16 @@ function Header() {
                   </Link>
                 </li>
                 <li className="p-5 s:p-0">
-                  <a
+                  { !user ? (<a
                     className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white"
                     href="#logear"
                   >
                     {t("header.signin")}
-                  </a>
+                  </a>) : (<button onClick={logOutSesion}>
+                    <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                      {t("navbar.Log Out")}
+                    </h2>
+                  </button>)}
                 </li>
               </ul>
             }
