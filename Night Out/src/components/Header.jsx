@@ -122,8 +122,8 @@ function Header() {
                     href="#logear"
                   >
                     {t("header.signin")}
-                  </a>) : (<button onClick={logOutSesion}>
-                    <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
+                  </a>) : (<button onClick={logOutSesion} className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white">
+                    <h2 >
                       {t("navbar.Log Out")}
                     </h2>
                   </button>)}

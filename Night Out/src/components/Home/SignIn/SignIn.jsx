@@ -161,7 +161,7 @@ function SignIn() {
         </h2>
         <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold animate-pulse s:text-lg">
           {user ? (
-            <Link to="/">Let's go!</Link>
+            <Link to="/Feed">Let's go!</Link>
           ) : (
             <Link to="/Sign-up">Let's go!</Link>
           )}
