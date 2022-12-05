@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 function Introduction() {
+  const [t] = useTranslation('global')
   return (
     <div className="colorBlanco flex flex-col justify-around items-center  lg:my-48 scroll-mt-64 snap-end snap-always s:mb-10 s:mt-24 w-full">
       {/*Para el texto, imagen y las flechas para cambiar lo que se ve */}
@@ -8,10 +10,16 @@ function Introduction() {
         {/*Para el texto y la imagen */}
         <div className="flex flex-col w-2/4 s:order-2 s:w-full md:order-1">
           {/*Para el texto */}
+<<<<<<< HEAD
           <h2 className="font-bold lg:text-6xl p-6 md:text-4xl s:text-2xl">The new way to make friends</h2>
           <p className="p-6 text-xl md:text-lg s:text-base lg:text-2xl">
             Night Out is a platform made for people who want to go out, but
             don’t know who to go with.
+=======
+          <h2 className="font-bold text-6xl p-6 md:text-4xl s:text-2xl">{t("introduction.The new way to make friends")}</h2>
+          <p className="p-6 text-xl md:text-lg s:text-base">
+          {t("introduction.Night Out is...")}
+>>>>>>> rodri
           </p>
         </div>
         <img className="md:h-56 lg:h-60 s:h-auto s:order-1 md:order-2 xl:h-96 " src="src\assets\imgIntroduction.png" alt="imagen" />

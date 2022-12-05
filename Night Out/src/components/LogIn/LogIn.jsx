@@ -7,6 +7,8 @@ import { getUserDetail } from "../../redux/actions";
 import { UserAuth } from '../firebase/context/AuthContext'
 import { Alerts } from '../alerts/Alerts'
 
+import { useTranslation } from 'react-i18next';
+
 function validate(user) {
   let error = {}
   
@@ -77,6 +79,7 @@ function LogIn() {
 
   }, [])
 
+  const [t] = useTranslation('global')
   return (
     <div
       className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 mt-16 "
@@ -84,12 +87,12 @@ function LogIn() {
     >
       <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl m-10">
         {" "}
-        Sign In
+        {t("login.Sign In")}
       </h2>
       <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl p-10 flex flex-col justify-evenly items-center w-1/2 mb-10">
         <form className="flex flex-col w-full " onSubmit={handleSubmit} action="">
           <label className="text-xl font-bold m-2 ml-5" htmlFor="username">
-            Email
+          {t("login.Email")}
           </label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full mb-5">
             <img
@@ -107,7 +110,7 @@ function LogIn() {
             />
           </div>
           <label className="text-xl font-bold m-2 ml-5" htmlFor="password">
-            Password
+          {t("login.Password")}
           </label>
           <div className="w-full flex flex-row flex-nowrap bg-gray rounded-full  mb-5">
             <img
@@ -128,7 +131,7 @@ function LogIn() {
             className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold"
             type="submit"
           >
-            Sign in
+            {t("login.Sign In")}
           </button>
         </form>
       </div>
@@ -136,7 +139,7 @@ function LogIn() {
         <h2 className="font-bold text-4xl mb-10">Don't have an account yet?</h2>
         <h2 className="font-bold text-4xl mb-10">Sign up!</h2>
         <button className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold">
-          <Link to="/Sign-up">Let's go!</Link>
+          <Link to="/Sign-up">{t("login.Let's go!")}</Link>
         </button>
       </div>
     </div>

@@ -1,27 +1,29 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const [t] = useTranslation('global')
   return (
     <footer className="text-white flex flex-col items-center justify-evenly ">
       <span className="mt-8 h-0.1 bg-gray w-4/5"></span>
       <h2 className="font-semibold text-2xl mt-8">Useful Links</h2>
       <ul className="list-none flex md:flex-row font-semibold text-2xl mt-10 s:flex-col s:text-center s:text-xl">
         <li className="px-10 s:py-1">
-          <a href="#">About Us</a>
+          <a href="#">{t("footer.About us")}</a>
         </li>
         <li className="px-10 s:py-1">
-          <a href="#">Team</a>
+          <a href="#">{t("footer.Team")}</a>
         </li>
         <li className="px-10 s:py-1">
-          <a href="#">Services</a>
+          <a href="#">{t("footer.Services")}</a>
         </li>
         <li className="px-10 s:py-1">
-          <a href="#">Contact Us</a>
+          <a href="#">{t("footer.Contact Us")}</a>
         </li>
       </ul>
       <div className="xl:w-1/3 mt-16 flex flex-col items-center s:w-4/5 s:text-center md:w-3/5 2xl:w-1/4">
         <h2 className="text-2xl font-medium mb-3 s:text-xl">
-          Subscribe to our newsletter!
+        {t("footer.Subscribe to our newsletter!")}
         </h2>
         <form
           action=""
@@ -52,10 +54,10 @@ function Footer() {
       <div className="flex flex-col items-center justify-center mt-16 mb-8">
         <div className="flex flex-row items-center justify-center">
           <img className="w-14 mr-3" src="src\assets\logo.png" alt="logo" />
-          <h2 className="font-semibold text-2xl">Night Out</h2>
+          <h2 className="font-semibold text-2xl">{t("footer.Night Out")}</h2>
         </div>
         <h3 className="text-gray font-semibold text-md">
-          © All Rights Reserved
+          {t("footer.© All Rights Reserved")}
         </h3>
       </div>
     </footer>

@@ -51,27 +51,65 @@
     "test": "prueba"
   },
   "hiw":{
+    "First step" : "Primer paso",
+    "Verify your identity" : "Verifica tu identidad",
+    "Create your profile" : "Crea tu perfil y verificalo para empezar a usar Night Out.",
+    "Second step" : "Segundo paso",
+    "Set up your profile" : "Configura tu perfil.",
+    "Upload pictures..." : "Subi fotos, contale a la gente sobre vos y postea todos los lugares a los que te gustaria ir.",
+    "Third step" : "Tercer paso",
+    "Connect." : "Conectate.",
+    "Find your next..." : "Descubri tu proxima salida y conoce gente nueva para juntarte.",
+    "Easy, right?" : "Facil, no?"    
 
   },
   "introduction":{
-
+    "The new way to make friends" : "La nueva manera de hacer amigos",
+    "Night Out is..." : "Night out es una plataforma pensada para personas que quieren salir, pero no saben con quien."
+    
   },
+  
   "signin":{
+    "What now?" : "Y ahora que?",
+    "Email" : "Email",
+    "Password" : "Contraseña",
+    "Sign in" : "Ingresa",
+    "Don't have an account yet?" : "Aun no tenes una cuenta?",
+    "Sign up!" : "Registrate!",
+    "Let's go!" : "Vamos!"
 
   },
   "login":{
+    "Sign In" : "Ingresa",
+    "Email" : "Email",
+    "Password" : "Password",
+    "Let's go!" : "Let's go!"
 
   },
   "pruebas":{
 
   },
   "signup":{
+    "Night Out - Sign Up" : "Night Out - Registro",
+    "Sign Up" : "Registrate",
+    "Agree to Terms and Conditions" : "Aceptar terminos y condiciones",
+    "Sign up!" : "Registrate!"
 
   },
   "user":{
-
+    "Moderador" : "Moderador",
+    "Description" : "Descripción",
+    "Moderador de Night Out" : "Moderador de Night Out"
+  
   },
   "footer":{
+    "About us" : "Acerca de nosotros",
+    "Team" : "Nuestro equipo",
+    "Services" : "Servicios",
+    "Contact Us" : "Contacto",
+    "Subscribe to our newsletter!" : "suscribite a nuestro newsletter!",
+    "Night Out" : "Night Out",
+    "© All Rights Reserved" : "© Todos los derechos reservados"
 
   },
   "header":{
