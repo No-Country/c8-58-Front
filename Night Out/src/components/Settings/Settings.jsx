@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, NavLink, Link } from "react-router-dom";
 import Language from "../language/Language";
 import { UserAuth } from '../firebase/context/AuthContext'
 import DarkMode from '../DarkMode/DarkMode'
+import { useTranslation } from 'react-i18next'
 
 function Settings() {
   const activeStyle = {
@@ -10,7 +11,18 @@ function Settings() {
     textColor: "white",
     listStyle: "round",
   };
+  const [lang, setLang] = useState('')
   const { logOut, user } = UserAuth()
+
+  const [t, i18n] = useTranslation('global')
+
+  const confirmLang = () => {
+      if(lang === 'en') i18n.changeLanguage('en')
+      if(lang === 'es') i18n.changeLanguage('es')
+      localStorage.setItem('language', lang)
+      console.log(lang)
+  }
+
   return (
     <div className="flex lg:flex-row justify-between lg:items-start mt-10 s:flex-col s:items-center 2xl:w-1/2 w-4/5">
       <div className="flex flex-col s:items-center s:w-full lg:w-1/2">
@@ -127,10 +139,13 @@ function Settings() {
                 </div>
                 <span className="bg-gray h-0.1 w-full block"></span>
                 <div className="w-full flex flex-row items-center mt-3 mb-3 py-6">
-                  <p className="mr-3">Change Language:</p>
-                  <Language />
+                  <p className="mr-3">{t("language.change")}:</p>
+                  <Language
+                    setLang={setLang}
+                  />
                 </div>
               </form>
+              <button onClick={confirmLang}>Confirm</button>
             </div>
           }
         ></Route>

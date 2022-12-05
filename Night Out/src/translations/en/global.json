@@ -1,7 +1,26 @@
 {
-  "alerts":{
-    "correct" : "Correct",
-    "incorrect" : "Incorrect"
+  "signUp":{
+    "missing-email": "Enter an email",
+    "invalid-email": "Enter a valid email",
+    "email-already-in-use": "This email is already in use, enter another one please",
+    "internal-error": "Enter a password, please",
+    "weak-password": "Weak password, please enter at least 6 characters",
+    "nameLength": "The name must contain at least 8 characters",
+    "nameLetter": "The name must only contain letters",
+    "dni": "Enter a valid ID (8 numbers)",
+    "cel+": "After the ' + ' enter only numbers, please",
+    "cel": "The phone must only contain numbers, please",
+    "check": "Accept terms and conditions to continue with the process",
+    "password": "Passwords do not match",
+    "registered": "You have successfully registered"
+  },
+  "signIn":{
+    "wrong-password": "Incorrect password",
+    "user-not-found": "user not found",
+    "not-email": "Enter an email, please",
+    "not-password": "Enter a password, please",
+    "correct": "session started, welcome ",
+    "close": "closed session"
   },
   "language":{
     "change" : "Change Language"
@@ -57,8 +76,6 @@
   },
   "header":{
     "home" : "Home",
-    "signin" : "Sign In",
-    "correct" : "Correct",
-    "incorrect" : "Incorrect"
+    "signin" : "Sign In"
   }
 }
