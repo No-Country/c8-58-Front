@@ -67,6 +67,10 @@ function Header() {
     }
   };
 
+  if ( !user ) {
+    setNavbarMostrado(false)
+  }
+
   return (
     <header
       className={
