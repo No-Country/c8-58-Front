@@ -23,6 +23,8 @@ function LogIn() {
   const { signInEmailPassword } = UserAuth()
   const { correct, wrong } = Alerts()
 
+  const [t] = useTranslation('global')
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -78,12 +80,10 @@ function LogIn() {
   useEffect(() => {
 
   }, [])
-
-  const [t] = useTranslation('global')
   return (
     <div
       className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 mt-16 "
-      id=""
+      id="logear"
     >
       <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 text-4xl m-10">
         {" "}
@@ -129,7 +129,6 @@ function LogIn() {
           </div>
           <button
             className="bg-gray rounded-full colorNegro h-8 text-xl mx-auto p-7 text-center flex justify-center items-center font-bold"
-            type="submit"
           >
             {t("login.Sign In")}
           </button>
