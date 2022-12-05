@@ -96,7 +96,7 @@ function Filters() {
             disabled="disabled"
           >
             {" "}
-            Lugar
+            {t("filters.Place")}
           </option>
           <option className="text-black" value="Palermo">
             Palermo

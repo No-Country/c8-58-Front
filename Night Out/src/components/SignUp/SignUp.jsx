@@ -9,8 +9,6 @@ import { postUser, getUserDetail } from '../../redux/actions/index'
 import { UserAuth } from '../firebase/context/AuthContext'
 import { Alerts } from '../alerts/Alerts'
 
-import { useTranslation } from 'react-i18next';
-
 function validate(user) {
   let error = {}
   
@@ -151,8 +149,6 @@ function SignUp() {
       wrong(`${t("signUp.password")}` )      
     }
   }
-
-  const [t] = useTranslation('global')
   return (
     <>
     <Helmet>

@@ -8,7 +8,7 @@ import { UserAuth } from "../firebase/context/AuthContext";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-  let { NavbarMostrado } = useContext(GlobalContext);
+  let { setNavbarMostrado, NavbarMostrado } = useContext(GlobalContext);
   const [t] = useTranslation("global");
 
   const navigate = useNavigate();
@@ -26,6 +26,11 @@ function Navbar() {
       console.log(error);
     }
   };
+
+  const Navegar = () => {
+    setNavbarMostrado(false)
+    navigate("/")
+  }
 
   return (
     <div
@@ -115,11 +120,11 @@ function Navbar() {
                 </span>
               ) : (
                 <>
-                  <NavLink className="" to="/Sign-In">
+                  <button onClick={Navegar} >
                     <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
                       {t("header.signin")}
                     </h2>
-                  </NavLink>
+                  </button>
                   <span className="bg-lineaNavbar h-1 w-full block"></span>
                 </>
               )}

@@ -8,8 +8,6 @@ import { getUserDetail } from "../../../redux/actions";
 import { UserAuth } from "../../firebase/context/AuthContext";
 import { Alerts } from "../../alerts/Alerts";
 
-import { useTranslation } from 'react-i18next';
-
 function validate(userSI) {
   let error = {}
   
@@ -92,6 +90,8 @@ function SignIn() {
   }
 
   useEffect(() => {}, []);
+
+  
 
   return (
     <div

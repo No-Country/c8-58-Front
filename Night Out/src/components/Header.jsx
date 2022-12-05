@@ -67,16 +67,14 @@ function Header() {
     }
   };
 
-  if ( !user ) {
-    setNavbarMostrado(false)
-  }
+  
 
   return (
     <header
       className={
         NavbarMostrado === false
-          ? "text-white flex flex-row items-center justify-evenly bg-gradiante1 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0 lg:py-2"
-          : "text-white flex flex-row items-center justify-evenly  bg-gradiante1 sticky top-0 z-10 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0 lg:py-2"
+          ? "text-white flex flex-row items-center justify-evenly bg-gradiante1 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0 "
+          : "text-white flex flex-row items-center justify-evenly  bg-gradiante1 sticky top-0 z-10 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0"
       }
     >
       <div className="flex flex-row  items-center">
@@ -190,7 +188,7 @@ function Header() {
           <Route
             path="/*"
             element={
-              <div className="flex flex-row items-center just">
+              <div className="flex flex-row items-center just my-3">
                 <button onClick={mostrarNavbar}>
                   <img
                     src="src\assets\menuBlanco.png"
