@@ -7,7 +7,7 @@ const [t, i18n] = useTranslation('global')
 
   const handleLanguage = (language) => {
     setLang(language.target.value)
-    console.log("Cambiando Lenguaje")
+    console.log("Cambiando Lenguaje a " + language.target.value)
   }
   const idioma = localStorage.getItem('language')
 // A donde vaya el texto a traducir hay que importar "import { useTranslation } from 'react-i18next'"

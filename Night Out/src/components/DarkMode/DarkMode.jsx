@@ -4,15 +4,20 @@ function DarkMode() {
 
     
     // const toggleDarkMode = ref(document.documentElement.className === "dark");
-    
+    let modo = "Dark";
     const changeDarkMode = (mode) => {
-        console.log(mode.target.value)
+        
         if ( mode.target.value === "light" ) {
             document.documentElement.classList.add("dark");
+            modo = "light"
+            console.log("Modo Claro " + modo)
         }
         else {
             document.documentElement.classList.remove("dark");
+            modo = "dark"
+            console.log("Modo Oscuro " + modo)
         }
+
     };
 
   return (
@@ -23,10 +28,11 @@ function DarkMode() {
       <select
         name="darkMode"
         id="darkMode"
+        defaultValue={modo}
         onChange={changeDarkMode}
         className="text-black bg-gray p-2 pr-4 pl-4 outline-none border-none rounded-full appearance-none hover:cursor-pointer text-center"
       >
-        <option value="dark" selected>
+        <option value="dark">
           Dark
         </option>
         <option value="light">Light</option>
