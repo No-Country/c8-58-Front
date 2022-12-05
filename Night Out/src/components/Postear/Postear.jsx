@@ -48,8 +48,8 @@ function Postear() {
             maxLength="100"
             className="w-full rounded-3xl p-5 bg-gray text-black 2xl:max-h-16 resize-none outline-none s:max-h-28"
           ></textarea>
-          <button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 2xl:top-1/2 -right-3 hover:animate-bounce s:top-3/4">
-            <img src="src\assets\flechaBlanca.png" alt="Subir" />
+          <button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 2xl:top-1/2 -right-3 group s:top-3/4">
+            <img src="src\assets\flechaBlanca.png" alt="Subir" className="group-hover:animate-bounce"/>
           </button>
         </div>
       </div>

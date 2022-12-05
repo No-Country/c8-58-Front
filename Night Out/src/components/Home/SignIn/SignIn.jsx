@@ -93,7 +93,6 @@ function SignIn() {
 
   useEffect(() => {}, []);
 
-  const [t] = useTranslation('global')
   return (
     <div
       className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 "
@@ -164,11 +163,7 @@ function SignIn() {
         </h2>
         <button className="bg-gray rounded-full colorNegro h-8 md:text-xl mx-auto p-7 text-center flex justify-center items-center font-bold animate-pulse s:text-lg">
           {user ? (
-<<<<<<< HEAD
-            <Link to="/Feed">Let's go!</Link>
-=======
-            <Link to="/">{t("signin.Let's go!")}</Link>
->>>>>>> rodri
+            <Link to="/Feed">{t("signin.Let's go!")}</Link>
           ) : (
             <Link to="/Sign-up">{t("signin.Let's go!")}</Link>
           )}
