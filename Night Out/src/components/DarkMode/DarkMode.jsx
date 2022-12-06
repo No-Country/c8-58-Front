@@ -1,21 +1,21 @@
-import React from "react";
+import { React, useContext, useState } from "react";
+import { GlobalContext } from "../../Context/GlobalContext";
+
 
 function DarkMode() {
 
-    
-    // const toggleDarkMode = ref(document.documentElement.className === "dark");
-    let modo = "Dark";
+    const { DarkMode, setDarkMode } = useContext(GlobalContext)
     const changeDarkMode = (mode) => {
         
         if ( mode.target.value === "light" ) {
             document.documentElement.classList.add("dark");
-            modo = "light"
-            console.log("Modo Claro " + modo)
+            setDarkMode("light")
+            console.log("Modo Claro " + DarkMode)
         }
         else {
             document.documentElement.classList.remove("dark");
-            modo = "dark"
-            console.log("Modo Oscuro " + modo)
+            setDarkMode("dark")
+            console.log("Modo Oscuro " + DarkMode)
         }
 
     };
@@ -28,7 +28,7 @@ function DarkMode() {
       <select
         name="darkMode"
         id="darkMode"
-        defaultValue={modo}
+        defaultValue={DarkMode}
         onChange={changeDarkMode}
         className="text-black bg-gray p-2 pr-4 pl-4 outline-none border-none rounded-full appearance-none hover:cursor-pointer text-center"
       >

@@ -28,23 +28,25 @@ function Settings() {
       <div className="flex flex-col s:items-center s:w-full lg:w-1/2">
         <Link
           to="/Feed"
-          className=" justify-start bg-gradiante2 rounded-full lg:mr-10 lg:mb-10 hover:bg-gradiante3 s:mr-0 s:mb-3 s:px-5 s:w-3/4 md:w-1/2 lg:w-3/4"
+          className=" justify-start bg-gradiante2 rounded-full lg:mr-10 lg:mb-10 hover:bg-gradiante3 s:mr-0 s:mb-3 s:px-5 s:w-3/4 md:w-1/2 lg:w-3/4 dark:bg-Lgradiante3 dark:hover:bg-Lgradiante1"
         >
           <div className="flex flex-row items-center justify-around s:justify-center">
             <img src="../src\assets\Home.png" alt="Home" className="w-8" />
             <h2 className="mt-3 mb-3 text-white s:ml-3">Go Home</h2>
           </div>
         </Link>
-        <div className="bg-lila p-5 lg:mr-10 s:mr-0 s:w-3/4 s:text-center s:mb-5 md:w-1/2 lg:w-3/4">
+        <div className="bg-gradiante1 p-5 lg:mr-10 s:mr-0 s:w-3/4 s:text-center s:mb-5 md:w-1/2 lg:w-3/4 dark:bg-Lgradiante1">
           <ul className="text-white">
-            { user ? (<li className="mt-3 mb-3">
+            { user ? (<>
+              <li className="mt-3 mb-3">
               <NavLink
                 to="/Settings-User"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 User
               </NavLink>
-            </li>) : ""}
+            </li>
+            <span className="bg-gray h-0.1 w-full block"></span></>) : ""}
             <li className="mt-3 mb-3">
               <NavLink
                 to="/Settings-Configuration"
@@ -60,12 +62,25 @@ function Settings() {
         <Route
           path="/Settings-User"
           element={
-            <div className="bg-gradiante1 text-white w-11/12">
+            <div className="bg-gradiante1 text-white w-11/12 dark:bg-Lgradiante1">
               <form
                 action=""
                 className="flex flex-col justify-evenly items-start m-5"
                 autoComplete="off"
               >
+                <div className="flex mt-3 mb-3 s:flex-col s:items-start">
+                  <label htmlFor="fotoPerfil" className="mr-3">
+                    Profile Picture:
+                  </label>
+                  <input
+                    type="file"
+                    name="perfil"
+                    id="fotoPerfil"
+                    accept="image/*"
+                    className="s:w-full l:w-auto"
+                  />
+                </div>
+                <span className="bg-gray h-0.1 w-full block"></span>
                 <div className="flex flex-col items-start mt-3 mb-3 w-full">
                   <label htmlFor="usuario" className="mr-3">
                     Username:
@@ -80,7 +95,7 @@ function Settings() {
                 <span className="bg-gray h-0.1 w-full block"></span>
                 <div className="flex flex-col items-start mt-3 mb-3 w-full">
                   <label htmlFor="descripcion" className="mr-3">
-                    Descrition:
+                    Description:
                   </label>
                   <textarea
                     name="descripcion"
@@ -89,19 +104,6 @@ function Settings() {
                     rows="10"
                     className="resize-none p-2 pl-5 pr-5 outline-none text-black w-full rounded-3xl bg-gray max-h-24"
                   ></textarea>
-                </div>
-                <span className="bg-gray h-0.1 w-full block"></span>
-                <div className="flex mt-3 mb-3 s:flex-col s:items-start">
-                  <label htmlFor="fotoPerfil" className="mr-3">
-                    Profile Picture:
-                  </label>
-                  <input
-                    type="file"
-                    name="perfil"
-                    id="fotoPerfil"
-                    accept="image/*"
-                    className="s:w-full l:w-auto"
-                  />
                 </div>
                 <span className="bg-gray h-0.1 w-full block"></span>
                 <div className="flex mt-3 mb-3 s:flex-col s:items-start">
@@ -128,7 +130,7 @@ function Settings() {
         <Route
           path="/Settings-Configuration"
           element={
-            <div className=" bg-gradiante1 text-white w-11/12 mb-36 lg:min-w-fit">
+            <div className=" bg-gradiante1 text-white w-11/12 mb-36 lg:min-w-fit dark:bg-Lgradiante1">
               <form
                 action=""
                 className="flex flex-col justify-evenly items-start m-5"

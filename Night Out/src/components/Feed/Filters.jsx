@@ -41,8 +41,8 @@ function Filters() {
     <div
       className={
         FiltrosMostrado === false
-          ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10 s:w-full s:px-0"
-          : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10 s:w-full s:px-0"
+          ? "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute -z-10 s:w-full s:px-0 dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3"
+          : "bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 flex flex-col justify-evenly items-center p-5 w-4/5 absolute z-10 s:w-full s:px-0 dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3"
       }
     >
       <div className="flex flex-row items-center justify-between w-full s:px-5">
@@ -58,9 +58,9 @@ function Filters() {
           </button>
         </div>
       </div>
-      <div className="flex md:flex-row items-center w-full justify-evenly pt-5 text-white bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 s:flex-col s:w-full">
+      <div className="flex md:flex-row items-center w-full justify-evenly pt-5 text-white bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 s:flex-col s:w-full dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3">
         <select
-          className="w-full text-center text-xl bg-gradient-to-r md:from-gradiante1 md:to-gradiante2 appearance-none s:from-gradiante1 s:via-gradiante2 s:to-gradiante3 s:mb-2 md:mb-0"
+          className="w-full text-center text-xl bg-gradient-to-r md:from-gradiante1 md:to-gradiante2 appearance-none s:from-gradiante1 s:via-gradiante2 s:to-gradiante3 s:mb-2 md:mb-0 md:dark:from-Lgradiante1 md:dark:to-Lgradiante2 s:dark:from-Lgradiante1 s:dark:via-Lgradiante2 s:dark:to-Lgradiante3"
           onChange={(e) => handleEvento(e)}
         >
           <option
@@ -86,7 +86,7 @@ function Filters() {
           </option>
         </select>
         <select
-          className="w-full text-center text-xl bg-gradient-to-r md:from-gradiante2 md:to-gradiante3 appearance-none s:from-gradiante1 s:via-gradiante2 s:to-gradiante3 s:mt-2 md:mt-0"
+          className="w-full text-center text-xl bg-gradient-to-r md:from-gradiante2 md:to-gradiante3 appearance-none s:from-gradiante1 s:via-gradiante2 s:to-gradiante3 s:mt-2 md:mt-0 md:dark:from-Lgradiante2 md:dark:to-Lgradiante3 s:dark:from-Lgradiante1 s:dark:via-Lgradiante2 s:dark:to-Lgradiante3"
           onChange={(e) => handleLugar(e)}
         >
           <option

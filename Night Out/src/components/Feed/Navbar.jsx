@@ -36,8 +36,8 @@ function Navbar() {
     <div
       className={
         NavbarMostrado === false
-          ? "bg-gradiante1 fixed text-white flex flex-col justify-between NavbarOculto z-50"
-          : "bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50"
+          ? "bg-gradiante1 fixed text-white flex flex-col justify-between NavbarOculto z-50 dark:bg-Lgradiante1"
+          : "bg-gradiante1 fixed text-white flex flex-col justify-between Navbar z-50 dark:bg-Lgradiante1"
       }
     >
       <div>
@@ -67,7 +67,7 @@ function Navbar() {
           </div>
         </div>
         <div>
-          <span className="bg-lineaNavbar h-1 w-full block"></span>
+          <span className="bg-black h-0.2 w-full block dark:h-0.2 dark:bg-lineaNavbar"></span>
           <ul>
             <li>
               {user ? (
@@ -77,7 +77,7 @@ function Navbar() {
                       User
                     </h2>
                   </Link>
-                  <span className="bg-lineaNavbar h-1 w-full block"></span>
+                  <span className="bg-black h-0.2 w-full block dark:h-0.2 dark:bg-lineaNavbar"></span>
                 </>
               ) : (
                 ""
@@ -87,7 +87,7 @@ function Navbar() {
               <h2 className="pr-10 pl-10 text-3xl mt-2 mb-2 s:text-xl">
                 {t("navbar.Direct Messages")}
               </h2>
-              <span className="bg-lineaNavbar h-1 w-full block"></span>
+              <span className="bg-black h-0.2 w-full block dark:h-0.2 dark:bg-lineaNavbar"></span>
             </li>
             <li>
               {user ? (
@@ -103,7 +103,7 @@ function Navbar() {
                   </h2>
                 </Link>
               )}
-              <span className="bg-lineaNavbar h-1 w-full block"></span>
+              <span className="bg-black h-0.2 w-full block dark:h-0.2 dark:bg-lineaNavbar"></span>
             </li>
             <li>
               {user ? (
@@ -116,7 +116,7 @@ function Navbar() {
                       {t("navbar.Log Out")}
                     </h2>
                   </button>
-                  <span className="bg-lineaNavbar h-1 w-full block"></span>
+                  <span className="bg-black h-0.2 w-full block dark:h-0.2 dark:bg-lineaNavbar"></span>
                 </span>
               ) : (
                 <>
@@ -125,7 +125,7 @@ function Navbar() {
                       {t("header.signin")}
                     </h2>
                   </button>
-                  <span className="bg-lineaNavbar h-1 w-full block"></span>
+                  <span className="bg-black h-0.2 w-full block dark:h-0.2 dark:bg-lineaNavbar"></span>
                 </>
               )}
             </li>

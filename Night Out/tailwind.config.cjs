@@ -19,6 +19,9 @@ module.exports = {
       }
     },
     colors: {
+
+      //Modo Oscuro:
+
       "fondo": "#011631",
       "black": "#000000",
       "white": "#FFFFFF",
@@ -30,6 +33,17 @@ module.exports = {
       "gradiante4": "#824ACF",
       "gray": "#D9D9D9",
       "lineaNavbar": "#011631",
+
+      //Modo claro:
+
+      "Lfondo": "#4966BC",
+      "Llila": "#6F8DE4",
+      "Lvioleta": "#6F8DE4",
+      "Lgradiante1": "#6F8DE4",
+      "Lgradiante2": "#775EB7",
+      "Lgradiante3": "#7B1DFD",
+      "Lgradiante4": "#824ACF",
+      "LlineaNavbar": "rgba(1, 22, 49, 0.69)",
     },
     screens: {
       "s":"320px",

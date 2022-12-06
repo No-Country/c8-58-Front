@@ -40,7 +40,7 @@ function Footer() {
             />
           </div>
           <button
-            className="xl:w-1/4 h-14 bg-gradient-to-r from-gradiante3 via-gradiante2 to-gradiante1 pl-6 pr-6 flex justify-center items-center md:rounded-l-none group s:rounded-full s:w-1/3 s:mt-5 md:mt-0"
+            className="xl:w-1/4 h-14 bg-gradient-to-r from-gradiante3 via-gradiante2 to-gradiante1 pl-6 pr-6 flex justify-center items-center md:rounded-l-none group s:rounded-full s:w-1/3 s:mt-5 md:mt-0 dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3"
             type="submit"
           >
             <img

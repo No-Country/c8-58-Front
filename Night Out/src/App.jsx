@@ -17,7 +17,7 @@ import { AuthContextProvider } from './components/firebase/context/AuthContext'
 
 function App() {
 	return (
-		<div className="bg-fondo ">
+		<div className="bg-fondo dark:bg-Lfondo">
 			<AuthContextProvider>
 				<AlertsProvider>
 					<Header />

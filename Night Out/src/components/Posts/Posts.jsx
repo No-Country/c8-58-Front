@@ -23,7 +23,7 @@ function Posts({ id, name, image, event, text, location }) {
 
 				<div className="relative m-5 lg:w-11/12">
 					<p className=" rounded-3xl  p-5  bg-gray text-black ">{text}</p>
-					<button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 lg:top-1/2 right-2 s:top-3/4 s:-right-4">
+					<button className="absolute w-14 bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-full p-3 lg:top-1/2 right-2 s:top-3/4 s:-right-4 dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3">
 						<img
 							className=""
 							src="src\assets\comentariosBlanco.png"

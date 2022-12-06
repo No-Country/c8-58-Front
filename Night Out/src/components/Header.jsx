@@ -73,8 +73,8 @@ function Header() {
     <header
       className={
         NavbarMostrado === false
-          ? "text-white flex flex-row items-center justify-evenly bg-gradiante1 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0 "
-          : "text-white flex flex-row items-center justify-evenly  bg-gradiante1 sticky top-0 z-10 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0"
+          ? "text-white flex flex-row items-center justify-evenly bg-gradiante1 dark:bg-Lgradiante1 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0 "
+          : "text-white flex flex-row items-center justify-evenly  bg-gradiante1 dark:bg-Lgradiante1 sticky top-0 z-10 s:flex-col s:w-full s:pt-3 md:flex-row md:pt-0"
       }
     >
       <div className="flex flex-row  items-center">
@@ -109,22 +109,22 @@ function Header() {
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:pt-2 s:pb-2 l:text-xl md:p-0">
                 {/* <li><Language /></li> */}
                 <li className="p-5">
-                  <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/">
+                  <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3 hover:text-white" to="/">
                     {t("header.home")}
                   </NavLink>
                 </li>
                 <li className="p-5">
-                  <Link className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/Feed">
+                  <Link className="lg:p-4 lg:px-10 s:px-0 l:px-3 hover:text-white" to="/Feed">
                     Feed
                   </Link>
                 </li>
                 <li className="p-5 s:p-0">
                   { !user ? (<a
-                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white"
+                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white dark:from-Lgradiante3 dark:via-Lgradiante2 dark:to-Lgradiante1"
                     href="#logear"
                   >
                     {t("header.signin")}
-                  </a>) : (<button onClick={logOutSesion} className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white">
+                  </a>) : (<button onClick={logOutSesion} className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white dark:from-Lgradiante3 dark:via-Lgradiante2 dark:to-Lgradiante1">
                     <h2 >
                       {t("navbar.Log Out")}
                     </h2>
@@ -139,18 +139,18 @@ function Header() {
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:pt-2 s:pb-2 l:text-xl md:p-0">
                 {/* <li><Language /></li> */}
                 <li className="p-5">
-                  <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/">
+                  <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3 hover:text-white" to="/">
                     {t("header.home")}
                   </NavLink>
                 </li>
                 <li className="p-5">
-                  <Link className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/Feed">
+                  <Link className="lg:p-4 lg:px-10 s:px-0 l:px-3 hover:text-white" to="/Feed">
                     Feed
                   </Link>
                 </li>
                 <li className="p-5 s:p-0">
                   <NavLink
-                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white"
+                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white dark:from-Lgradiante3 dark:via-Lgradiante2 dark:to-Lgradiante1"
                     to="/Sign-In"
                   >
                     {t("header.signin")}
@@ -165,18 +165,18 @@ function Header() {
               <ul className="list-none text-gray flex flex-row text-xl justify-evenly items-center s:text-lg s:pt-2 s:pb-2 l:text-xl md:p-0">
                 {/* <li><Language /></li> */}
                 <li className="p-5">
-                  <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/">
+                  <NavLink className="lg:p-4 lg:px-10 s:px-0 l:px-3 hover:text-white" to="/">
                     {t("header.home")}
                   </NavLink>
                 </li>
                 <li className="p-5">
-                  <Link className="lg:p-4 lg:px-10 s:px-0 l:px-3" to="/Feed">
+                  <Link className="lg:p-4 lg:px-10 s:px-0 l:px-3 hover:text-white" to="/Feed">
                     Feed
                   </Link>
                 </li>
                 <li className="p-5 s:p-0">
                   <NavLink
-                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white"
+                    className="p-4 rounded-full bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 px-10 hover:text-white dark:from-Lgradiante3 dark:via-Lgradiante2 dark:to-Lgradiante1"
                     to="/Sign-In"
                   >
                     {t("header.signin")}

@@ -98,10 +98,10 @@ function SignIn() {
       className="flex flex-col justify-evenly items-center colorBlanco w-full mb-8 "
       id="logear"
     >
-      <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 md:text-3xl s:px-10 s:text-center s:mb-5 s:mt-5 s:text-2xl">
+      <h2 className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl font-bold px-48 py-10 md:text-3xl s:px-10 s:text-center s:mb-5 s:mt-5 s:text-2xl dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3">
       {t("signin.What now?")}
       </h2>
-      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl lg:p-10 flex flex-col justify-evenly items-center lg:w-3/4 mb-10 s:w-full s:p-5 xl:w-1/2 2xl:w-1/3">
+      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante3 rounded-3xl lg:p-10 flex flex-col justify-evenly items-center lg:w-3/4 mb-10 s:w-full s:p-5 xl:w-1/2 2xl:w-1/3 dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3">
         <h2 className="font-bold text-4xl s:text-2xl md:text-3xl">Sign in!</h2>
         <form
           className="flex flex-col w-full "
@@ -154,7 +154,7 @@ function SignIn() {
           </button>
         </form>
       </div>
-      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl flex flex-col justify-evenly items-center lg:w-3/4 p-10 text-center s:w-full s:p-5 xl:w-1/2 2xl:w-1/3">
+      <div className="bg-gradient-to-r from-gradiante1 via-gradiante2 to-gradiante4 rounded-3xl flex flex-col justify-evenly items-center lg:w-3/4 p-10 text-center s:w-full s:p-5 xl:w-1/2 2xl:w-1/3 dark:from-Lgradiante1 dark:via-Lgradiante2 dark:to-Lgradiante3">
         <h2 className="font-bold text-4xl mb-10 s:text-2xl md:text-3xl">
         {t("signin.Don't have an account yet?")}
         </h2>
